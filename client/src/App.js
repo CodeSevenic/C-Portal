@@ -82,7 +82,9 @@ const App = () => {
             path="*"
             element={
               <PrivateRoutes activeMenu={activeMenu} themeSettings={themeSettings}>
-                <Routes>{/* <Route path="/" element={<Ticketing />} /> */}</Routes>
+                <Routes>
+                  <Route path="/" element={<Ticketing />} />
+                </Routes>
               </PrivateRoutes>
             }
           />
