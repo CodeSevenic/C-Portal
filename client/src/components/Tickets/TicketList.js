@@ -146,7 +146,7 @@ function Ticketing() {
     );
   };
 
-  // const deleteTicket = async () => {};
+  const deleteTicket = async () => {};
 
   console.log('Filtered Tickets: ', filteredTickets);
 
