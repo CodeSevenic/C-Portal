@@ -31,3 +31,10 @@
 .e-toolbar-center {
   display: none !important;
 }
+
+.e-pager .e-currentitem,
+.e-pager .e-currentitem:hover {
+  background: #161b30 !important;
+  color: #fff;
+  opacity: 1;
+}

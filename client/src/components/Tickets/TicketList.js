@@ -106,15 +106,6 @@ function Ticketing() {
     },
   ];
 
-  const handleRowSelected = (args) => {
-    const selectedTicket = args.data;
-    setTicketToEdit({
-      ...selectedTicket,
-      title: selectedTicket.subject, // use the appropriate property for 'title'
-      content: '', // use the appropriate property for 'content'
-    });
-  };
-
   const handleCellClick = (data) => {
     setTicketToEdit({
       ...data,
@@ -161,15 +152,15 @@ function Ticketing() {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
+      <div className="max-w-7xl mx-auto px-5 py-20 bg-white rounded-3xl">
         {filteredTickets.length > 0 ? GridInfo() : GridInfo()}
+        <button
+          className="bg-moBlueLight text-white rounded p-2 px-5 mt-10 "
+          onClick={() => setTicketToEdit({ title: '', content: '' })}
+        >
+          Create a new ticket
+        </button>
       </div>
-      <button
-        className="bg-blue-500 text-white rounded p-2 mt-4"
-        onClick={() => setTicketToEdit({ title: '', content: '' })}
-      >
-        Create a new ticket
-      </button>
       <ReactModal isOpen={ticketToEdit !== null} onRequestClose={() => setTicketToEdit(null)}>
         <button className="close-button" onClick={() => setTicketToEdit(null)}>
           Close

@@ -10,6 +10,7 @@ import avatar from '../../assets/images/account-icon.png';
 import { Cart, Chat, Notification, UserProfile } from '..';
 import { useStateContext } from '../../contexts/ContextProvider';
 import { useAuthStateContext } from '../../contexts/AuthContext';
+import Logo from '../../assets/images/MO-Logo.svg';
 
 const NavButton = ({ title, customFunc, icon, color, dotColor }) => (
   <TooltipComponent content={title} position="BottomCenter">
@@ -62,13 +63,16 @@ const Navbar = () => {
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
   return (
-    <div className="flex justify-between p-2 md:ml-6 md:mr-6 relative">
-      <NavButton
+    <div className="flex justify-between p-2 relative max-w-7xl w-full mx-auto">
+      {/* <NavButton
         title="Menu"
         customFunc={handleActiveMenu}
         color={currentColor}
         icon={<AiOutlineMenu />}
-      />
+      /> */}
+      <div className="">
+        <img height={30} src={Logo} alt="Primary Logo" />
+      </div>
       <div className="flex">
         {/* <NavButton
           title="Cart"

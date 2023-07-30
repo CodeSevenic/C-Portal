@@ -11,8 +11,9 @@ module.exports = {
         14: '14px',
       },
       colors: {
-        btn1: '#ea5a28',
-        btn2: '#59c4ef',
+        moBlue: '#161B30',
+        moBlueLight: '#4E79F3',
+        moYellow: '#FFC600',
       },
       backgroundColor: {
         'main-bg': '#FAFBFB',
