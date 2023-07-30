@@ -1,0 +1,33 @@
+﻿.e-row .e-rowcell:nth-child(2):hover {
+  color: red !important;
+  cursor: pointer;
+}
+
+.e-headertext {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.e-input-group.e-search {
+  border: 1px solid gray !important;
+  border-radius: 20px;
+  padding: 0px 16px;
+}
+
+.e-toolbar-items.e-tbar-pos {
+  display: flex !important;
+  justify-content: space-between;
+  width: 100%;
+  padding: 16px;
+}
+
+.e-toolbar-items.e-tbar-pos > div {
+  position: relative !important;
+}
+
+.e-toolbar-right {
+  order: -1 !important;
+}
+.e-toolbar-center {
+  display: none !important;
+}

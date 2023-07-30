@@ -9,33 +9,47 @@ import {
   Page,
   Search,
   Filter,
+  Toolbar,
 } from '@syncfusion/ej2-react-grids';
 import { formatDistanceToNow, parseISO } from 'date-fns';
 import baseURL from '../../url';
+import { fit } from '@syncfusion/ej2-react-popups';
+import './Tickets.css';
 
 function Ticketing() {
-  const toolbarOptions = ['Search'];
   const [tickets, setTickets] = useState([]);
   const [ticketToEdit, setTicketToEdit] = useState(null);
+  const [statusFilter, setStatusFilter] = useState('all');
+  const [filteredTickets, setFilteredTickets] = useState([]);
 
   useEffect(() => {
     fetchTickets();
   }, []);
 
   const fetchTickets = async () => {
-    const response = await axios.get(`${baseURL}/api/tickets`);
-    const reshapedData = response.data.results.map((ticket) => ({
-      id: ticket.id,
-      subject: ticket.properties.subject,
-      created: new Date(ticket.properties.createdate).toLocaleDateString('en-US', {
-        year: 'numeric',
-        month: 'long',
-        day: 'numeric',
-      }),
-      lastActivity: formatDistanceToNow(parseISO(ticket.properties.hs_lastmodifieddate)) + ' ago',
-      status: ticket.properties.hs_pipeline_stage,
-    }));
-    setTickets(reshapedData);
+    try {
+      const response = await axios.get(`${baseURL}/api/tickets`);
+      if (response.data.results) {
+        const reshapedData = response.data.results.map((ticket) => ({
+          id: `#${ticket.id}`,
+          subject: ticket.properties.subject,
+          created: new Date(ticket.properties.createdate).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }),
+          lastActivity:
+            formatDistanceToNow(parseISO(ticket.properties.hs_lastmodifieddate)) + ' ago',
+          status: ticket.properties.hs_pipeline_stage,
+        }));
+        setTickets(reshapedData);
+      } else {
+        throw new Error('No results found.');
+      }
+    } catch (error) {
+      console.log(error);
+      // Depending on your application, you might want to display this error message to your users.
+    }
   };
 
   const handleInputChange = (event) => {
@@ -52,27 +66,103 @@ function Ticketing() {
     fetchTickets();
   };
 
+  useEffect(() => {
+    const filterTickets = () => {
+      if (statusFilter === 'all') {
+        setFilteredTickets(tickets);
+      } else {
+        setFilteredTickets(tickets.filter((ticket) => ticket.status === statusFilter));
+      }
+    };
+    filterTickets();
+  }, [tickets, statusFilter]);
+
+  const toolbarOptions = [
+    'Search',
+    {
+      template: () => (
+        <div className="flex gap-5">
+          <span className="text-[14px] font-semibold text-gray-500">Status: </span>{' '}
+          <select
+            className="border-1 w-32 border-color-gray-400 rounded-md p-1 text-gray-400 text-[12px]"
+            value={statusFilter}
+            onChange={(e) => {
+              console.log('e.target.value: ', e.target.value);
+              setStatusFilter(e.target.value);
+            }}
+          >
+            <option className="text-gray-400 text-[12px]" value="all">
+              All
+            </option>
+            <option className="text-gray-400 text-[12px]" value="open">
+              Open
+            </option>
+            <option className="text-gray-400 text-[12px]" value="closed">
+              Closed
+            </option>
+          </select>
+        </div>
+      ),
+    },
+  ];
+
+  const handleRowSelected = (args) => {
+    const selectedTicket = args.data;
+    setTicketToEdit({
+      ...selectedTicket,
+      title: selectedTicket.subject, // use the appropriate property for 'title'
+      content: '', // use the appropriate property for 'content'
+    });
+  };
+
+  const handleCellClick = (data) => {
+    setTicketToEdit({
+      ...data,
+      title: data.subject,
+      content: '',
+    });
+  };
+
+  const queryCellInfo = (args) => {
+    if (args.column.field === 'subject') {
+      args.cell.onclick = () => handleCellClick(args.data);
+    }
+  };
+
+  const GridInfo = () => {
+    const key = `${statusFilter}-${filteredTickets.length}`;
+    // Handle row selection event
+    return (
+      <GridComponent
+        key={key}
+        dataSource={filteredTickets}
+        width="auto"
+        allowPaging
+        allowSorting
+        toolbar={toolbarOptions}
+        pageSettings={{ pageCount: 5 }}
+        queryCellInfo={queryCellInfo}
+      >
+        <ColumnsDirective>
+          <ColumnDirective field="id" headerText="ID" />
+          <ColumnDirective field="subject" headerText="Subject" />
+          <ColumnDirective field="created" headerText="Created" />
+          <ColumnDirective field="lastActivity" headerText="Last Activity" />
+          <ColumnDirective field="status" headerText="Status" />
+        </ColumnsDirective>
+        <Inject services={[Page, Toolbar]} />
+      </GridComponent>
+    );
+  };
+
+  const deleteTicket = async () => {};
+
+  console.log('Filtered Tickets: ', filteredTickets);
+
   return (
     <div className="container mx-auto p-4">
       <div className="m-2 md:m-10 mt-24 p-2 md:p-10 bg-white rounded-3xl">
-        <GridComponent
-          dataSource={tickets}
-          width="auto"
-          allowPaging
-          allowSorting
-          allowFiltering
-          pageSettings={{ pageCount: 5 }}
-          toolbar={toolbarOptions}
-        >
-          <ColumnsDirective>
-            <ColumnDirective field="id" headerText="ID" />
-            <ColumnDirective field="subject" headerText="Subject" />
-            <ColumnDirective field="created" headerText="Created" />
-            <ColumnDirective field="lastActivity" headerText="Last Activity" />
-            <ColumnDirective field="status" headerText="Status" />
-          </ColumnsDirective>
-          <Inject services={[Search, Page, Filter]} />
-        </GridComponent>
+        {filteredTickets.length > 0 ? GridInfo() : GridInfo()}
       </div>
       <button
         className="bg-blue-500 text-white rounded p-2 mt-4"
@@ -80,7 +170,10 @@ function Ticketing() {
       >
         Create a new ticket
       </button>
-      <ReactModal isOpen={ticketToEdit !== null}>
+      <ReactModal isOpen={ticketToEdit !== null} onRequestClose={() => setTicketToEdit(null)}>
+        <button className="close-button" onClick={() => setTicketToEdit(null)}>
+          Close
+        </button>
         <h1 className="text-2xl mb-4">
           {ticketToEdit && ticketToEdit.id ? 'Edit Ticket' : 'Create Ticket'}
         </h1>
@@ -103,6 +196,11 @@ function Ticketing() {
             <button className="bg-blue-500 text-white rounded p-2" onClick={submitTicket}>
               {ticketToEdit.id ? 'Update' : 'Create'}
             </button>
+            {ticketToEdit.id && (
+              <button className="bg-red-500 text-white rounded p-2" onClick={deleteTicket}>
+                Delete
+              </button>
+            )}
           </>
         )}
       </ReactModal>
