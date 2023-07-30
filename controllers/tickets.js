@@ -1,4 +1,6 @@
-﻿console.log('process.env.HUBSPOT_API_KEY: ', process.env.HUBSPOT_API_KEY);
+﻿const axios = require('axios');
+
+console.log('process.env.HUBSPOT_API_KEY: ', process.env.HUBSPOT_API_KEY);
 
 exports.getTickets = async (req, res) => {
   console.log('Request has been made to get tickets');
@@ -10,6 +12,7 @@ exports.getTickets = async (req, res) => {
       },
       headers: { Authorization: `Bearer ${process.env.HUBSPOT_API_KEY}` },
     });
+    console.log('response.data: ', response.data);
     res.send(response.data);
   } catch (error) {
     res.status(500).send(error);

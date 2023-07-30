@@ -1,7 +1,6 @@
 ﻿import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-
-const baseURL = 'http://localhost:3001';
+import baseURL from '../../url';
 
 function Ticketing() {
   const [tickets, setTickets] = useState([]);
