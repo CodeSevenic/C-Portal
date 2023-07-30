@@ -1,8 +1,14 @@
 ﻿const express = require('express');
-const { getTickets, createTicket, updateTicket } = require('../controllers/tickets');
+const {
+  getTickets,
+  createTicket,
+  updateTicket,
+  getTicketsByOwnerEmail,
+  getTicketsByContactEmail,
+} = require('../controllers/tickets');
 const router = express.Router();
 
-router.get('/tickets', getTickets);
+router.get('/tickets', getTicketsByContactEmail);
 
 router.post('/tickets', createTicket);
 
