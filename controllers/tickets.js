@@ -1,4 +1,7 @@
-﻿exports.getTickets = async (req, res) => {
+﻿console.log('process.env.HUBSPOT_API_KEY: ', process.env.HUBSPOT_API_KEY);
+
+exports.getTickets = async (req, res) => {
+  console.log('Request has been made to get tickets');
   try {
     const response = await axios.get('https://api.hubapi.com/crm/v3/objects/tickets', {
       params: {
