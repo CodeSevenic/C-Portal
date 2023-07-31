@@ -11,7 +11,7 @@ const Footer = () => (
         <a href="/" className="logo block mb-8">
           <img src={Logo} alt="logo" />
         </a>
-        <p className="text-white">We are awesome at making things look great!</p>
+        <p className="text-white">We are awesome at making things function and look great!</p>
         <div className="social-links flex gap-5 mt-8">
           <a className="block" target="_blank" href="https://www.facebook.com/" rel="noreferrer">
             <img src={Facebook} alt="Facebook Logo" />
