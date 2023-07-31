@@ -5,6 +5,7 @@ import ThemeSettings from '../ThemeSettings';
 import Sidebar from '../Sidebar/Sidebar';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer';
+import SubNav from '../SubNav/SubNav';
 
 function Layout({ children, activeMenu, themeSettings }) {
   return (
@@ -13,6 +14,7 @@ function Layout({ children, activeMenu, themeSettings }) {
         <div className="fixed md:static min-h-[85px] flex flex-col justify-center bg-moYellow w-full ">
           <Navbar />
         </div>
+        <SubNav />
         <div>
           {themeSettings && <ThemeSettings />}
           {children}
