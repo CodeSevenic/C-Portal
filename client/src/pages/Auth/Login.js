@@ -128,7 +128,6 @@ const Login = () => {
           <img src={Y_axis_logo} alt="Y axis YuboData Logo" />
         </div>
       </div>
-      <Footer />
     </div>
   );
 };
