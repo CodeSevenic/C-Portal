@@ -9,7 +9,7 @@ import { NavLink } from 'react-router-dom';
 const SubNav = () => {
   // Create 3 nav items the react-router way
   return (
-    <div className="nav-items max-w-6xl mx-auto px-5 pt-14">
+    <div className="nav-items max-w-6xl mx-auto px-5 pt-20">
       <ul className="flex gap-9 justify-around">
         <li>
           <NavLink className="font-semibold border-1 border-gray-50 shadow-md rounded-xl px-10 min-w-[200px] py-5 flex flex-col text-gray-500 items-center text-xl">
