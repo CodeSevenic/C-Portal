@@ -41,9 +41,11 @@ const HubSpotForm = () => {
 
   return (
     <div className="bg-moYellow py-20">
-      <div className="grid grid-cols-2">
-        <div></div>
-        <div id={formId}></div>
+      <div className="grid grid-cols-2 max-w-7xl mx-auto">
+        <div className=""></div>
+        <div className="form-bg">
+          <div className="py-16 px-16" id={formId}></div>
+        </div>
       </div>
     </div>
   );

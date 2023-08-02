@@ -7,3 +7,9 @@
   width: 100%;
   background-color: #fff;
 }
+
+.form-bg {
+  background-image: url(../../assets/images/MO-Yellow-Dude.webp);
+  background-repeat: no-repeat;
+  background-size: contain;
+}
