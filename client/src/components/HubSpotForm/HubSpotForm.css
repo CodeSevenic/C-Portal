@@ -1,3 +1,9 @@
-﻿#hubspot-form form div .input input {
-  border: 1px solid #313030;
+﻿#hubspot-form form div .input input,
+#hubspot-form form div textarea,
+#hubspot-form form div select {
+  border: 1px solid #161b30;
+  border-radius: 10px;
+  padding: 5px 20px;
+  width: 100%;
+  background-color: #fff;
 }
