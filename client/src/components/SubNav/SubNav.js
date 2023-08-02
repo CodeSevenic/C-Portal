@@ -26,7 +26,7 @@ const SubNav = () => {
         </li>
         <li>
           <NavLink className="nav-link font-semibold border-1 border-gray-50 shadow-md rounded-xl px-10 min-w-[200px] py-5 flex flex-col  items-center text-xl">
-            <GrArticle className="text-5xl stroke-transparent  text-moBlueLight block" />
+            <GrArticle className="text-5xl text-moBlueLight block" />
             <span className="text-gray-500">Resources</span>
           </NavLink>
         </li>
