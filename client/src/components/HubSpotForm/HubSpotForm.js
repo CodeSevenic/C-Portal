@@ -41,15 +41,21 @@ const HubSpotForm = () => {
 
   return (
     <div className="bg-moYellow py-20">
-      <div className="grid grid-cols-2 max-w-7xl mx-auto">
+      <div className="grid grid-cols-2 gap-14 max-w-7xl px-16 mx-auto">
         <div className="py-10 my-20">
           <h1 className="text-[4.8rem] leading-[90px] text-white font-bold">
             Submit a HubSpot Support Ticket.
           </h1>
-          <p></p>
+          <p>
+            One of our specialists will respond with an answer shortly.
+            <br />
+            <br />
+            Please note, if you are <b>not currently registered</b> with us, please allow us time to
+            register your account.
+          </p>
         </div>
-        <div className="form-bg">
-          <div className="my-20 mx-auto max-w-md py-10 px-8  bg-[#fffa]" id={formId}></div>
+        <div className="form-bg flex justify-end">
+          <div className="my-20 max-w-md py-10 px-8  bg-[#fffa]" id={formId}></div>
         </div>
       </div>
     </div>
