@@ -25,3 +25,23 @@
   font-size: 12px;
   margin-top: 5px;
 }
+
+#hubspot-form form .hs-submit .actions {
+  margin-top: 30px;
+  margin-bottom: 20px;
+}
+
+#hubspot-form form .hs-submit .actions input {
+  background-color: #161b30;
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  padding: 10px 20px;
+  width: 100%;
+  cursor: pointer;
+}
+
+#hubspot-form form .hs-submit .actions input:hover {
+  background-color: #4e79f3;
+  transition: all 0.3s ease-in-out;
+}
