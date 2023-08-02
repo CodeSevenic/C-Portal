@@ -8,8 +8,20 @@
   background-color: #fff;
 }
 
+#hubspot-form form {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
 .form-bg {
   background-image: url(../../assets/images/MO-Yellow-Dude.webp);
   background-repeat: no-repeat;
   background-size: contain;
+}
+
+#hubspot-form form .hs-error-msg {
+  color: red;
+  font-size: 12px;
+  margin-top: 5px;
 }
