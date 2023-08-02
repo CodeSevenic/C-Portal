@@ -1,1 +1,12 @@
-﻿
+﻿.nav-items li .nav-link span,
+.nav-items li .nav-link svg,
+.nav-items li .nav-link svg path {
+  stroke: #161b30 !important;
+}
+.nav-items li:hover .nav-link span,
+.nav-items li:hover .nav-link svg,
+.nav-items li:hover .nav-link svg path {
+  color: #4e79f3 !important;
+  stroke: #4e79f3 !important;
+  transition: all 0.2s ease-in-out;
+}

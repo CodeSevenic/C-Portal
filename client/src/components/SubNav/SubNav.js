@@ -5,6 +5,7 @@ import { MdOutlineSendTimeExtension, MdOutlineVideoLibrary } from 'react-icons/m
 import { RiFileList3Line } from 'react-icons/ri';
 import { SiPrimevideo } from 'react-icons/si';
 import { NavLink } from 'react-router-dom';
+import './SubNav.css';
 
 const SubNav = () => {
   // Create 3 nav items the react-router way
@@ -24,13 +25,13 @@ const SubNav = () => {
           </NavLink>
         </li>
         <li>
-          <NavLink className="nav-link font-semibold border-1 border-gray-50 shadow-md rounded-xl px-10 min-w-[200px] py-5 flex flex-col  text-gray-500 items-center text-xl">
-            <GrArticle className="text-5xl  text-moBlue block" />
+          <NavLink className="nav-link font-semibold border-1 border-gray-50 shadow-md rounded-xl px-10 min-w-[200px] py-5 flex flex-col  items-center text-xl">
+            <GrArticle className="text-5xl stroke-transparent  text-moBlueLight block" />
             <span className="text-gray-500">Resources</span>
           </NavLink>
         </li>
         <li>
-          <NavLink className="nav-link font-semibold border-1 border-gray-50 shadow-md rounded-xl px-10 min-w-[200px] py-5 flex  flex-col text-gray-500 items-center text-xl">
+          <NavLink className="nav-link font-semibold border-1 border-gray-50 shadow-md rounded-xl px-10 min-w-[200px] py-5 flex  flex-col  items-center text-xl">
             <MdOutlineVideoLibrary className="text-5xl  text-moBlue block" />
             <span className="text-gray-500">Webinars</span>
           </NavLink>
