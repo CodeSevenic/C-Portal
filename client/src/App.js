@@ -19,6 +19,7 @@ import PasswordReset from './pages/Auth/PasswordReset';
 
 import baseURL from './url';
 import Ticketing from './components/Tickets/TicketList';
+import HubSpotForm from './components/HubSpotForm/HubSpotForm';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, themeSettings } =
@@ -84,6 +85,7 @@ const App = () => {
               <PrivateRoutes activeMenu={activeMenu} themeSettings={themeSettings}>
                 <Routes>
                   <Route path="/" element={<Ticketing />} />
+                  <Route path="/log-ticket" element={<HubSpotForm />} />
                 </Routes>
               </PrivateRoutes>
             }

@@ -5,7 +5,7 @@ import Linkedin from './../assets/images/LinkedIn.svg';
 import Instagram from './../assets/images/Instagram.svg';
 
 const Footer = () => (
-  <div className=" pt-20 mt-5 bg-moBlue">
+  <div className=" pt-20 bg-moBlue">
     <div className="footer-container grid grid-cols-4 gap-x-12 max-w-7xl mx-auto px-4">
       <div>
         <a href="/" className="logo block mb-8">
