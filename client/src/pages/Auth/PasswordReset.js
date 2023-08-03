@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { Link } from 'react-router-dom';
 import MODude from '../../assets/images/MO-Yellow-Dude.webp';
-import Logo from '../../assets/images/Artboard.png';
+import Logo from '../../assets/images/MO-Logo.svg';
 import Y_axis_logo from '../../assets/images/YoboDataLogo.png';
 import { useAuthStateContext } from '../../contexts/AuthContext';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
@@ -52,9 +52,15 @@ const PasswordReset = () => {
         />
 
         <div className="grid grid-cols-2 max-w-7xl gap-28 mx-auto h-full ">
-          <div className="my-auto mr-32 relative">
+          <div className="my-auto max-w-md relative">
             {loadingSpinner && <LoadingSpinner />}
-            <img className="mx-auto mb-8" width={100} height={100} src={Logo} alt="YuboData Logo" />
+            <img
+              className="mx-auto mb-8"
+              width={250}
+              height={100}
+              src={Logo}
+              alt="MO Customer Portal Logo"
+            />
             <p className="text-gray-500 text-sm font-semibold mb-5 text-center">
               Enter your email to reset your password.
             </p>
