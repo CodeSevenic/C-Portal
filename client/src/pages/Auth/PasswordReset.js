@@ -37,7 +37,7 @@ const PasswordReset = () => {
 
   return (
     <div className="bg-moYellow h-full">
-      <div className="overflow-x-hidden relative">
+      <div className="overflow-x-hidden relative h-full">
         <ToastContainer
           position="top-center"
           autoClose={5000}
@@ -79,7 +79,7 @@ const PasswordReset = () => {
               </div>
 
               <button
-                className="bg-moBlue px-5 block py-2 w-full rounded-xl mb-8 font-semibold text-white hover:shadow-lg transition-all duration-300"
+                className="bg-moBlue  px-5 block py-2 w-fit mx-auto rounded-xl mb-8 font-semibold text-white hover:shadow-lg transition-all duration-300"
                 type="submit"
               >
                 Reset Password
@@ -92,7 +92,6 @@ const PasswordReset = () => {
               </Link>
             </div>
           </div>
-
           <div className="relative overflow-hidden flex items-center justify-end">
             <img src={MODude} alt="MO Rider" className="block" />
           </div>
