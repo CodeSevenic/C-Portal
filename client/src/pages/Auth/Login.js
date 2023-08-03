@@ -2,7 +2,7 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { Link } from 'react-router-dom';
-import YuboBg from '../../assets/images/yubo_portal_login_page_L-min.jpg';
+import MODude from '../../assets/images/MO-Yellow-Dude.webp';
 import Logo from '../../assets/images/MO-Logo.svg';
 import Y_axis_logo from '../../assets/images/YoboDataLogo.png';
 import { useAuthStateContext } from '../../contexts/AuthContext';
@@ -124,7 +124,7 @@ const Login = () => {
           <div className="relative overflow-hidden w-[100vw] rounded-bl-[30px]">
             <div
               style={{
-                backgroundImage: `url(${YuboBg})`,
+                backgroundImage: `url(${MODude})`,
               }}
               className="absolute h-full  w-full min-h-screen bg-cover bg-center bg-no-repeat"
             ></div>
