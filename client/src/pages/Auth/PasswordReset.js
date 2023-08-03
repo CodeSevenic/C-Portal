@@ -79,7 +79,7 @@ const PasswordReset = () => {
               </div>
 
               <button
-                className="bg-btn1 px-5 block py-2 w-full rounded-xl mb-8 font-semibold text-white hover:shadow-lg transition-all duration-300"
+                className="bg-moBlue px-5 block py-2 w-full rounded-xl mb-8 font-semibold text-white hover:shadow-lg transition-all duration-300"
                 type="submit"
               >
                 Reset Password
