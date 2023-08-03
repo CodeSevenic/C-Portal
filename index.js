@@ -55,10 +55,12 @@ app.get('/health', (req, res) => {
 const authRoutes = require('./routes/auth');
 const firebase = require('./routes/firebase');
 const tickets = require('./routes/tickets');
+const posts = require('./routes/posts');
 
 app.use('/api/', authRoutes);
 app.use('/api/', firebase);
 app.use('/api/', tickets);
+app.use('/api/', posts);
 
 // Front End
 app.use(express.static(path.join(__dirname, 'client/build')));
