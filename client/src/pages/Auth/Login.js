@@ -3,7 +3,7 @@ import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { Link } from 'react-router-dom';
 import YuboBg from '../../assets/images/yubo_portal_login_page_L-min.jpg';
-import Logo from '../../assets/images/Artboard.png';
+import Logo from '../../assets/images/MO-Logo.svg';
 import Y_axis_logo from '../../assets/images/YoboDataLogo.png';
 import { useAuthStateContext } from '../../contexts/AuthContext';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
@@ -44,7 +44,7 @@ const Login = () => {
     'p-2 border bg-slate-100 border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-transparent';
 
   return (
-    <div className="">
+    <div className="bg-moYellow h-full">
       <div className="overflow-x-hidden relative">
         <ToastContainer
           position="top-center"
@@ -62,7 +62,13 @@ const Login = () => {
         <div className="grid grid-cols-2 max-w-5xl mx-auto h-[85vh] ">
           <div className="my-auto mr-32 relative">
             {loadingSpinner && <LoadingSpinner />}
-            <img className="mx-auto mb-8" width={100} height={100} src={Logo} alt="YuboData Logo" />
+            <img
+              className="mx-auto mb-8"
+              width={250}
+              height={100}
+              src={Logo}
+              alt="MO Customer Portal Logo"
+            />
             <p className="text-gray-500 text-sm font-semibold mb-5 text-center">
               Enter your email and password to log in
             </p>
@@ -96,7 +102,7 @@ const Login = () => {
                 />
               </div>
               <button
-                className="bg-btn1 px-5 block py-2 w-full rounded-xl mb-8 font-semibold text-white hover:shadow-lg transition-all duration-300"
+                className="bg-moBlue px-5 block py-2 w-full rounded-xl mb-8 font-semibold text-white hover:shadow-lg transition-all duration-300"
                 type="submit"
               >
                 Login
@@ -107,12 +113,12 @@ const Login = () => {
                 <button className="text-btn2 font-medium">Forgot Password</button>
               </Link>
             </div>
-            <div className="flex gap-5 justify-center">
+            {/* <div className="flex gap-5 justify-center">
               <p className="font-semibold text-gray-500">Don't have an account?</p>
               <Link to={'/register'}>
-                <button className="text-btn2 font-medium">Register</button>
+                <button className="text-moBlue font-medium">Register</button>
               </Link>
-            </div>
+            </div> */}
           </div>
 
           <div className="relative overflow-hidden w-[100vw] rounded-bl-[30px]">
