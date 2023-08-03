@@ -2,7 +2,7 @@
 import { ToastContainer, toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { Link } from 'react-router-dom';
-import YuboBg from '../../assets/images/yubo_portal_login_page_L-min.jpg';
+import MODude from '../../assets/images/MO-Yellow-Dude.webp';
 import Logo from '../../assets/images/Artboard.png';
 import Y_axis_logo from '../../assets/images/YoboDataLogo.png';
 import { useAuthStateContext } from '../../contexts/AuthContext';
@@ -87,20 +87,11 @@ const PasswordReset = () => {
             </div>
           </div>
 
-          <div className="relative overflow-hidden w-[100vw] rounded-bl-[30px]">
-            <div
-              style={{
-                backgroundImage: `url(${YuboBg})`,
-              }}
-              className="absolute h-full  w-full min-h-screen bg-cover bg-center bg-no-repeat"
-            ></div>
+          <div className="relative overflow-hidden flex items-center justify-end">
+            <img src={MODude} alt="MO Rider" className="block" />
           </div>
         </div>
-        <div className="absolute top-0 right-0 w-12 bg-white  h-full px-2 py-8">
-          <img src={Y_axis_logo} alt="Y axis YuboData Logo" />
-        </div>
       </div>
-      <Footer />
     </div>
   );
 };
