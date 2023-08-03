@@ -45,7 +45,7 @@ const Login = () => {
 
   return (
     <div className="bg-moYellow h-full">
-      <div className="overflow-x-hidden relative">
+      <div className="overflow-x-hidden relative h-full">
         <ToastContainer
           position="top-center"
           autoClose={5000}
@@ -59,7 +59,7 @@ const Login = () => {
           theme="dark"
         />
 
-        <div className="grid grid-cols-2 max-w-5xl mx-auto h-[85vh] ">
+        <div className="grid grid-cols-2 max-w-5xl mx-auto h-full ">
           <div className="my-auto mr-32 relative">
             {loadingSpinner && <LoadingSpinner />}
             <img
@@ -121,17 +121,9 @@ const Login = () => {
             </div> */}
           </div>
 
-          <div className="relative overflow-hidden w-[100vw] rounded-bl-[30px]">
-            <div
-              style={{
-                backgroundImage: `url(${MODude})`,
-              }}
-              className="absolute h-full  w-full min-h-screen bg-cover bg-center bg-no-repeat"
-            ></div>
+          <div className="relative overflow-hidden flex items-center">
+            <img src={MODude} alt="MO Rider" className="" />
           </div>
-        </div>
-        <div className="absolute top-0 right-0 w-12 bg-white  h-full px-2 py-8">
-          <img src={Y_axis_logo} alt="Y axis YuboData Logo" />
         </div>
       </div>
     </div>
