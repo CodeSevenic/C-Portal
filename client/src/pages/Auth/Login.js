@@ -59,8 +59,8 @@ const Login = () => {
           theme="dark"
         />
 
-        <div className="grid grid-cols-2 max-w-5xl mx-auto h-full ">
-          <div className="my-auto mr-32 relative">
+        <div className="grid grid-cols-2 max-w-7xl gap-28 mx-auto h-full ">
+          <div className="my-auto max-w-md relative">
             {loadingSpinner && <LoadingSpinner />}
             <img
               className="mx-auto mb-8"
@@ -113,16 +113,9 @@ const Login = () => {
                 <button className="text-btn2 font-medium">Forgot Password</button>
               </Link>
             </div>
-            {/* <div className="flex gap-5 justify-center">
-              <p className="font-semibold text-gray-500">Don't have an account?</p>
-              <Link to={'/register'}>
-                <button className="text-moBlue font-medium">Register</button>
-              </Link>
-            </div> */}
           </div>
-
-          <div className="relative overflow-hidden flex items-center">
-            <img src={MODude} alt="MO Rider" className="" />
+          <div className="relative overflow-hidden flex items-center justify-end">
+            <img src={MODude} alt="MO Rider" className="block" />
           </div>
         </div>
       </div>
