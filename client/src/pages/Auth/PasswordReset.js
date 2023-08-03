@@ -36,7 +36,7 @@ const PasswordReset = () => {
     'p-2 border bg-slate-100 border-gray-200 rounded-xl focus:outline-none focus:ring-1 focus:ring-blue-600 focus:border-transparent';
 
   return (
-    <div className="">
+    <div className="bg-moYellow h-full">
       <div className="overflow-x-hidden relative">
         <ToastContainer
           position="top-center"
@@ -51,7 +51,7 @@ const PasswordReset = () => {
           theme="dark"
         />
 
-        <div className="grid grid-cols-2 max-w-5xl mx-auto h-[85vh] ">
+        <div className="grid grid-cols-2 max-w-7xl gap-28 mx-auto h-full ">
           <div className="my-auto mr-32 relative">
             {loadingSpinner && <LoadingSpinner />}
             <img className="mx-auto mb-8" width={100} height={100} src={Logo} alt="YuboData Logo" />
