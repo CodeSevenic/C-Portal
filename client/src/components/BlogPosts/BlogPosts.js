@@ -5,12 +5,20 @@ import baseURL from '../../url';
 function BlogPosts() {
   const [posts, setPosts] = useState([]);
   const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+
+  const fetchData = async () => {
+    try {
+      const result = await axios.get(`${baseURL}/api/blog-posts?page=${page}`);
+      console.log(result.data.data);
+      setPosts(result.data.data);
+      setTotalPages(result.data.totalPages); // set total pages
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
 
   useEffect(() => {
-    async function fetchData() {
-      const result = await axios.get(`${baseURL}/api/blog-posts?page=${page}`);
-      setPosts(result.data);
-    }
     fetchData();
   }, [page]);
 
@@ -22,39 +30,98 @@ function BlogPosts() {
     setPage((prevPage) => Math.max(prevPage - 1, 1));
   };
 
+  const handlePageChange = (page) => {
+    setPage(page);
+  };
+
+  const stripHtmlTags = (str) => {
+    if (str === null || str === '') return false;
+    else str = str.toString();
+    return str.replace(/<[^>]*>/g, '');
+  };
+
   return (
     <div>
-      {posts.map((post, index) => (
-        <div key={index}>
-          <h2>{post.name}</h2>
-          <p>
-            <strong>Author ID:</strong> {post.blog_author_id}
-          </p>
-          <p>
-            <strong>Created:</strong> {new Date(post.created).toLocaleDateString()}
-          </p>
-          <p>
-            <strong>Updated:</strong> {new Date(post.updated).toLocaleDateString()}
-          </p>
-          <p>
-            <strong>Campaign:</strong> {post.campaign_name}
-          </p>
-          <img src={post.featuredImage} alt="post" />
-          <p>{post.post_summary}</p>
-          <a href={post.url}>Read More</a>
-          <div>
-            <strong>Keywords:</strong>{' '}
-            {post.keywords.map((keyword, i) => (
-              <span key={i}>{keyword.keyword}</span>
-            ))}
-          </div>
-          <div>
-            <strong>Topics:</strong> {post.topic_ids.join(', ')}
-          </div>
-        </div>
-      ))}
-      <button onClick={handlePrev}>Prev</button>
-      <button onClick={handleNext}>Next</button>
+      <div className="grid grid-cols-4 gap-8 max-w-7xl mx-auto py-20">
+        {posts.length > 0 &&
+          posts.map((post, index) => (
+            <div key={index} className="overflow-hidden flex flex-col shadow-lg rounded-lg">
+              <a
+                target="_blank"
+                href={post.url}
+                rel="noreferrer"
+                className="min-h-[180px] block mb-5 rounded-lg overflow-hidden"
+              >
+                <img className="w-full h-full object-cover" src={post.featured_image} alt="post" />
+              </a>
+              <div className="px-5 pb-5 flex flex-col h-full">
+                <a className="" target="_blank" href={post.url} rel="noreferrer">
+                  {' '}
+                  <h2 className="font-semibold text-moBlue hover:text-moBlueLight transition-all duration-300 text-2xl mb-5">
+                    {post.name}
+                  </h2>{' '}
+                </a>
+                <p className="mb-4">
+                  {new Date(post.created).toLocaleDateString('en-US', {
+                    year: 'numeric',
+                    month: 'long',
+                    day: 'numeric',
+                  })}
+                </p>
+
+                <p className="text-sm grow">{stripHtmlTags(post.post_summary)}</p>
+                <a
+                  className="bg-moBlue hover:bg-moBlueLight transition-all duration-300  block w-fit mt-4 py-2 text-white rounded-lg px-5"
+                  target="_blank"
+                  href={post.url}
+                  rel="noreferrer"
+                >
+                  Read More
+                </a>
+              </div>
+            </div>
+          ))}
+      </div>{' '}
+      <div className="max-w-[300px] mx-auto mt-5 mb-20 flex gap-5">
+        <button onClick={handlePrev}>Prev</button>
+
+        <button
+          onClick={() => handlePageChange(1)}
+          className={page === 1 ? 'active text-moBlueLight font-semibold' : ''}
+        >
+          1
+        </button>
+
+        {page > 3 && <span>...</span>}
+
+        {[...Array(5)].map((_, i) => {
+          const pageNumber = page - 2 + i; // adjust to have a window of 5 pages around the current one
+          if (pageNumber <= page + 2 && pageNumber > 1 && pageNumber < totalPages) {
+            return (
+              <button
+                key={i}
+                onClick={() => handlePageChange(pageNumber)}
+                className={page === pageNumber ? 'active text-moBlueLight font-semibold' : ''}
+              >
+                {pageNumber}
+              </button>
+            );
+          } else {
+            return null;
+          }
+        })}
+
+        {page < totalPages - 2 && <span>...</span>}
+
+        <button
+          onClick={() => handlePageChange(totalPages)}
+          className={page === totalPages ? 'active text-moBlueLight font-semibold' : ''}
+        >
+          {totalPages}
+        </button>
+
+        <button onClick={handleNext}>Next</button>
+      </div>
     </div>
   );
 }

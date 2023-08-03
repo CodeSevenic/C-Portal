@@ -1,7 +1,5 @@
 ﻿const axios = require('axios');
 
-console.log('process.env.HUBSPOT_API_KEY: ', process.env.HUBSPOT_API_KEY);
-
 exports.getTicketsByContactEmail = async (req, res) => {
   const contactEmail = 'sibusiso@mo.agency'; // Hardcoded for testing
   console.log(`Request has been made to get tickets associated with contact ${contactEmail}`);

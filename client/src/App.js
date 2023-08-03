@@ -20,6 +20,7 @@ import PasswordReset from './pages/Auth/PasswordReset';
 import baseURL from './url';
 import Ticketing from './components/Tickets/TicketList';
 import HubSpotForm from './components/HubSpotForm/HubSpotForm';
+import BlogPosts from './components/BlogPosts/BlogPosts';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, themeSettings } =
@@ -72,9 +73,9 @@ const App = () => {
           <Route path="/login" element={<PublicRoutes />}>
             <Route index element={<Login />} />
           </Route>
-          <Route path="/register" element={<PublicRoutes />}>
+          {/* <Route path="/register" element={<PublicRoutes />}>
             <Route index element={<Register />} />
-          </Route>
+          </Route> */}
           <Route path="/password-reset" element={<PublicRoutes />}>
             <Route index element={<PasswordReset />} />
           </Route>
@@ -86,6 +87,7 @@ const App = () => {
                 <Routes>
                   <Route path="/" element={<Ticketing />} />
                   <Route path="/log-ticket" element={<HubSpotForm />} />
+                  <Route path="/resources" element={<BlogPosts />} />
                 </Routes>
               </PrivateRoutes>
             }

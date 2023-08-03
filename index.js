@@ -1,6 +1,5 @@
 const express = require('express');
 const session = require('express-session');
-const opn = require('open');
 const cors = require('cors');
 const cookieParser = require('cookie-parser');
 const { default: axios } = require('axios');
@@ -74,4 +73,3 @@ app.get('*', function (_, res) {
 });
 
 app.listen(PORT, () => console.log(`=== Starting your app on http://localhost:${PORT} ===`));
-// opn(`http://localhost:${PORT}/api/`);
