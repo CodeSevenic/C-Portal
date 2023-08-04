@@ -129,7 +129,7 @@ function Ticketing() {
         dataSource={filteredTickets}
         width="auto"
         allowPaging
-        style={{ overflowX: 'auto' }}
+        style={{ overflowX: 'hidden' }}
         allowSorting
         toolbar={toolbarOptions}
         pageSettings={{ pageCount: 5 }}
@@ -153,7 +153,7 @@ function Ticketing() {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="max-w-7xl mx-auto px-5 py-20 bg-white rounded-3xl">
+      <div className="max-w-7xl mx-auto px-5 py-20 bg-white rounded-3xl ">
         {filteredTickets.length > 0 ? GridInfo() : GridInfo()}
         {/* <button
           className="bg-moBlueLight text-white rounded p-2 px-5 mt-10 "

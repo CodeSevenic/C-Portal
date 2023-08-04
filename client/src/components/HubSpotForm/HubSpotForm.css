@@ -58,6 +58,6 @@
 @media screen and (max-width: 1024px) {
   td.e-rowcell,
   th.e-headercell {
-    width: 200px !important;
+    width: 180px !important;
   }
 }
