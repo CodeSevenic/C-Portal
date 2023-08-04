@@ -6,7 +6,7 @@ import Instagram from './../assets/images/Instagram.svg';
 
 const Footer = () => (
   <div className=" pt-20 bg-moBlue">
-    <div className="footer-container grid grid-cols-4 gap-x-12 max-w-7xl mx-auto px-4">
+    <div className="footer-container grid xl:grid-cols-4 gap-x-12 max-w-7xl mx-auto px-4">
       <div>
         <a href="/" className="logo block mb-8">
           <img src={Logo} alt="logo" />
@@ -24,7 +24,7 @@ const Footer = () => (
           </a>
         </div>
       </div>
-      <div>
+      <div className="mt-8 md:mt-0">
         <h3 className="text-white font-bold mb-12">Quick Links</h3>
         <ul className="text-white">
           <li className="mb-3">
@@ -70,10 +70,10 @@ const Footer = () => (
         </p>
       </div>
     </div>
-    <div className="flex justify-between px-6 max-w-5xl mx-auto pt-20 pb-10">
-      <p className="text-white">© MO Agency 2023</p>
+    <div className="flex flex-col items-center gap-2 justify-between px-6 max-w-5xl mx-auto pt-20 pb-10">
+      <p className="text-white text-sm md:text-[16px]">© MO Agency 2023</p>
       <a
-        className="block text-white text-[16px]"
+        className="block text-white text-sm md:text-[16px]"
         target="_blank"
         href="https://www.facebook.com/"
         rel="noreferrer"
@@ -81,7 +81,7 @@ const Footer = () => (
         Terms & Conditions
       </a>
       <a
-        className="block text-white text-[16px]"
+        className="block text-white text-sm md:text-[16px]"
         target="_blank"
         href="https://www.facebook.com/"
         rel="noreferrer"

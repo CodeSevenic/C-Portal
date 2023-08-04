@@ -42,7 +42,7 @@ function BlogPosts() {
 
   return (
     <div>
-      <div className="grid grid-cols-4 gap-8 max-w-7xl mx-auto py-20">
+      <div className="grid lg:grid-cols-4 gap-8 max-w-7xl mx-auto px-5 xl:px-0 py-20">
         {posts.length > 0 &&
           posts.map((post, index) => (
             <div key={index} className="overflow-hidden flex flex-col shadow-lg rounded-lg">
