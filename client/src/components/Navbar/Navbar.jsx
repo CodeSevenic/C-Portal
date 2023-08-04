@@ -63,14 +63,14 @@ const Navbar = () => {
   const handleActiveMenu = () => setActiveMenu(!activeMenu);
 
   return (
-    <div className="flex justify-between p-2 relative max-w-7xl w-full mx-auto">
+    <div className="flex justify-between p-5 xl:px-0 relative max-w-7xl w-full mx-auto">
       {/* <NavButton
         title="Menu"
         customFunc={handleActiveMenu}
         color={currentColor}
         icon={<AiOutlineMenu />}
       /> */}
-      <div className="">
+      <div className="max-w-[140px] md:max-w-[unset] flex">
         <img height={30} src={Logo} alt="Primary Logo" />
       </div>
       <div className="flex">
@@ -99,10 +99,18 @@ const Navbar = () => {
             className="flex items-center gap-2 cursor-pointer p-1 hover:bg-light-gray rounded-lg"
             onClick={() => handleClick('userProfile')}
           >
-            <img width={32} height={32} className="rounded-full" src={avatar} alt="user-profile" />
+            <img
+              width={32}
+              height={32}
+              className="rounded-full hidden md:block"
+              src={avatar}
+              alt="user-profile"
+            />
             <p>
               <span className="text-gray-400 text-14">Hi,</span>{' '}
-              <span className="text-gray-400 font-bold ml-1 text-xl">{username}</span>
+              <span className="text-gray-400 font-bold ml-1 text-[16px] md:text-xl">
+                {username}
+              </span>
             </p>
             <MdKeyboardArrowDown className="text-gray-400 text-14" />
           </div>

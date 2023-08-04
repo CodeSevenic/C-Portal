@@ -11,7 +11,7 @@ function Layout({ children, activeMenu, themeSettings }) {
   return (
     <div className="flex relative">
       <div className={'bg-white dark:bg-main-dark-bg  w-full min-h-screen flex-2 '}>
-        <div className="fixed md:static min-h-[85px] flex flex-col justify-center bg-moYellow w-full ">
+        <div className="md:static min-h-[85px] flex flex-col justify-center bg-moYellow w-full ">
           <Navbar />
         </div>
         <SubNav />

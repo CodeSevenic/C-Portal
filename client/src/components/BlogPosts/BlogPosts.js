@@ -61,7 +61,7 @@ function BlogPosts() {
                     {post.name}
                   </h2>{' '}
                 </a>
-                <p className="mb-4">
+                <p className="mb-4 text-sm text-gray-500">
                   {new Date(post.created).toLocaleDateString('en-US', {
                     year: 'numeric',
                     month: 'long',
