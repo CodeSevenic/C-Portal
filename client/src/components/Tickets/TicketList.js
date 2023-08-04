@@ -129,6 +129,7 @@ function Ticketing() {
         dataSource={filteredTickets}
         width="auto"
         allowPaging
+        style={{ overflowX: 'auto' }}
         allowSorting
         toolbar={toolbarOptions}
         pageSettings={{ pageCount: 5 }}

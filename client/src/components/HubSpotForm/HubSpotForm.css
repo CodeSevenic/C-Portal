@@ -54,3 +54,10 @@
   background-color: #4e79f3;
   transition: all 0.3s ease-in-out;
 }
+
+@media screen and (max-width: 1024px) {
+  td.e-rowcell,
+  th.e-headercell {
+    width: 200px !important;
+  }
+}
