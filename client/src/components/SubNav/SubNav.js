@@ -43,7 +43,7 @@ const SubNav = () => {
               className="nav-link font-semibold   px-5 md:px-10 min-w-[120px] md:min-w-[200px] py-5 flex flex-col  items-center text-sm md:text-xl"
             >
               <GrArticle className="text-5xl text-moBlueLight block" />
-              <span className="text-gray-500">Resources</span>
+              <span className="text-gray-500 text-center">Resources</span>
             </NavLink>
           </li>
           <li className="rounded-xl border-1 border-gray-50 shadow-md">
