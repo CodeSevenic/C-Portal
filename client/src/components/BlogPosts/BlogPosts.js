@@ -83,7 +83,12 @@ function BlogPosts() {
           ))}
       </div>{' '}
       <div className="max-w-[300px] mx-auto mt-5 mb-20 flex gap-5">
-        <button onClick={handlePrev}>Prev</button>
+        <button
+          className="font-semibold text-moBlue hover:text-moBlueLight transition-all duration-300"
+          onClick={handlePrev}
+        >
+          Prev
+        </button>
 
         <button
           onClick={() => handlePageChange(1)}
@@ -101,7 +106,11 @@ function BlogPosts() {
               <button
                 key={i}
                 onClick={() => handlePageChange(pageNumber)}
-                className={page === pageNumber ? 'active text-moBlueLight font-semibold' : ''}
+                className={
+                  page === pageNumber
+                    ? 'active text-moBlueLight font-semibold'
+                    : 'hover:text-moBlueLight transition-all duration-300 font-semibold'
+                }
               >
                 {pageNumber}
               </button>
@@ -120,7 +129,12 @@ function BlogPosts() {
           {totalPages}
         </button>
 
-        <button onClick={handleNext}>Next</button>
+        <button
+          className="font-semibold text-moBlue hover:text-moBlueLight transition-all duration-300"
+          onClick={handleNext}
+        >
+          Next
+        </button>
       </div>
     </div>
   );
