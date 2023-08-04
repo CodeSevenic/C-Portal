@@ -27,33 +27,11 @@ const App = () => {
     useStateContext();
   const { setIsLoggedIn } = useAuthStateContext();
 
-  console.log('NAME: ', baseURL);
-
   // useEffect function to handle messages from the OAuth window
   useEffect(() => {
     if (sessionStorage.getItem('isLoggedIn') === 'true') {
       setIsLoggedIn(true);
     }
-    const handleMessage = (event) => {
-      // Replace with your expected origin
-      // const expectedOrigin = 'http://localhost:3000'
-      const expectedOrigin = 'https://seahorse-app-847hs.ondigitalocean.app';
-
-      if (event.origin !== expectedOrigin) {
-        console.warn('Received message from untrusted origin, ignoring.');
-        return;
-      }
-
-      if (event.data.command === 'close') {
-        window.close();
-      }
-    };
-
-    window.addEventListener('message', handleMessage);
-
-    return () => {
-      window.removeEventListener('message', handleMessage);
-    };
   }, []);
 
   useEffect(() => {
