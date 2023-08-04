@@ -109,7 +109,7 @@ function BlogPosts() {
                 className={
                   page === pageNumber
                     ? 'active text-moBlueLight font-semibold'
-                    : 'hover:text-moBlueLight transition-all duration-300 font-semibold'
+                    : 'hover:text-moBlueLight transition-all duration-300 hover:font-semibold'
                 }
               >
                 {pageNumber}
@@ -124,7 +124,11 @@ function BlogPosts() {
 
         <button
           onClick={() => handlePageChange(totalPages)}
-          className={page === totalPages ? 'active text-moBlueLight font-semibold' : ''}
+          className={
+            page === totalPages
+              ? 'active text-moBlueLight font-semibold'
+              : 'hover:text-moBlueLight transition-all duration-300 hover:font-semibold'
+          }
         >
           {totalPages}
         </button>
