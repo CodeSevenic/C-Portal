@@ -52,7 +52,7 @@ const SubNav = () => {
               className="nav-link font-semibold   px-5 md:px-10 min-w-[120px] md:min-w-[200px] py-5 flex  flex-col  items-center text-sm md:text-xl"
             >
               <MdOutlineVideoLibrary className="text-5xl  text-moBlue block" />
-              <span className="text-gray-500">Webinars</span>
+              <span className="text-gray-500 text-center">Webinars</span>
             </NavLink>
           </li>
         </ul>
