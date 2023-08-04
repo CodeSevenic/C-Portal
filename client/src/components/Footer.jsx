@@ -70,7 +70,7 @@ const Footer = () => (
         </p>
       </div>
     </div>
-    <div className="flex flex-col items-center gap-2 justify-between px-6 max-w-5xl mx-auto pt-20 pb-10">
+    <div className="flex flex-col md:flex-row items-center gap-2 justify-between px-6 max-w-5xl mx-auto pt-20 pb-10">
       <p className="text-white text-sm md:text-[16px]">© MO Agency 2023</p>
       <a
         className="block text-white text-sm md:text-[16px]"
