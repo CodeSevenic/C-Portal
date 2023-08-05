@@ -10,4 +10,4 @@ const Webinars = () => {
   );
 };
 
-export default Webinars;
+// export default Webinars;
