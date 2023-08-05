@@ -21,6 +21,7 @@ import baseURL from './url';
 import Ticketing from './components/Tickets/TicketList';
 import HubSpotForm from './components/HubSpotForm/HubSpotForm';
 import BlogPosts from './components/BlogPosts/BlogPosts';
+import Webinars from './components/Webinars/Webinars';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, themeSettings } =
@@ -66,6 +67,7 @@ const App = () => {
                   <Route path="/" element={<Ticketing />} />
                   <Route path="/log-ticket" element={<HubSpotForm />} />
                   <Route path="/resources" element={<BlogPosts />} />
+                  <Route path="/webinars" element={<Webinars />} />
                 </Routes>
               </PrivateRoutes>
             }
