@@ -55,6 +55,29 @@
   transition: all 0.3s ease-in-out;
 }
 
+#hubspot-form .submitted-message {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
+}
+
+#hubspot-form .submitted-message > p {
+  color: #4e79f3;
+  font-size: 18px;
+  font-weight: 600;
+  text-align: center;
+}
+
+#hubspot-form form input[type='email'] {
+  /* Disable this filed and un-interactive */
+  pointer-events: none;
+  background-color: #4e7af33b !important;
+  color: #161b30;
+  border: none;
+}
+
 @media screen and (max-width: 1024px) {
   td.e-rowcell,
   th.e-headercell {

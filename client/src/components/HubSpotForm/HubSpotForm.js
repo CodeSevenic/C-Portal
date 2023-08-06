@@ -24,6 +24,7 @@ const HubSpotForm = () => {
             portalId: '2697939',
             formId: '1cfc8d0a-a8e8-4361-8524-b741a8d6a1f3',
           });
+          // Use JS to set email value to type="email" input after 3 seconds
         }
       });
     } else if (window.hbspt) {
@@ -34,6 +35,14 @@ const HubSpotForm = () => {
         portalId: '2697939',
         formId: '1cfc8d0a-a8e8-4361-8524-b741a8d6a1f3',
       });
+    }
+
+    if (window.hbspt) {
+      setTimeout(() => {
+        if (document.querySelector('input[type="email"]')) {
+          document.querySelector('input[type="email"]').value = sessionStorage.getItem('email');
+        }
+      }, 2000);
     }
 
     // On component unmount, do not remove the script

@@ -34,10 +34,16 @@ function Ticketing() {
             <option className="text-gray-400 text-[12px]" value="all">
               All
             </option>
-            <option className="text-gray-400 text-[12px]" value="open">
+            <option className="text-gray-400 text-[12px]" value="Open">
               Open
             </option>
-            <option className="text-gray-400 text-[12px]" value="closed">
+            <option className="text-gray-400 text-[12px]" value="Pending Customer's Reply">
+              Pending Customer's Reply
+            </option>
+            <option className="text-gray-400 text-[12px]" value="Pending MO's Reply">
+              Pending MO's Reply
+            </option>
+            <option className="text-gray-400 text-[12px]" value="Closed">
               Closed
             </option>
           </select>
