@@ -13,13 +13,28 @@ const Footer = () => (
         </a>
         <p className="text-white">We are awesome at making things function and look great!</p>
         <div className="social-links flex gap-5 mt-8">
-          <a className="block" target="_blank" href="https://www.facebook.com/" rel="noreferrer">
+          <a
+            className="block"
+            href="https://www.facebook.com/MOSouthAfrica"
+            target="_blank"
+            rel="noreferrer"
+          >
             <img src={Facebook} alt="Facebook Logo" />
           </a>
-          <a className="block" target="_blank" href="https://www.facebook.com/" rel="noreferrer">
+          <a
+            className="block"
+            target="_blank"
+            href="https://www.instagram.com/mo.agency_za/?hl=en"
+            rel="noreferrer"
+          >
             <img src={Instagram} alt="Instagram Logo" />
           </a>
-          <a className="block" target="_blank" href="https://www.facebook.com/" rel="noreferrer">
+          <a
+            className="block"
+            target="_blank"
+            href="https://www.linkedin.com/company/2258363"
+            rel="noreferrer"
+          >
             <img src={Linkedin} alt="Linkedin Logo" />
           </a>
         </div>
@@ -28,19 +43,29 @@ const Footer = () => (
         <h3 className="text-white font-bold mb-12">Quick Links</h3>
         <ul className="text-white">
           <li className="mb-3">
-            <a href="/">About Us</a>
+            <a target="_blank" rel="noreferrer" href="https://www.mo.agency/about-us">
+              About Us
+            </a>
           </li>
           <li className="mb-3">
-            <a href="/">Blog</a>
+            <a target="_blank" rel="noreferrer" href="https://www.mo.agency/blog">
+              Blog
+            </a>
           </li>
           <li className="mb-3">
-            <a href="/">Pricing</a>
+            <a target="_blank" rel="noreferrer" href="https://www.mo.agency/pricing">
+              Pricing
+            </a>
           </li>
           <li className="mb-3">
-            <a href="/">Landing Page</a>
+            <a target="_blank" rel="noreferrer" href="https://www.mo.agency/careers">
+              Careers
+            </a>
           </li>
           <li className="mb-3">
-            <a href="/">Contact Us</a>
+            <a target="_blank" rel="noreferrer" href="https://www.mo.agency/contact">
+              Contact Us
+            </a>
           </li>
         </ul>
       </div>
@@ -75,7 +100,7 @@ const Footer = () => (
       <a
         className="block text-white text-sm md:text-[16px]"
         target="_blank"
-        href="https://www.facebook.com/"
+        href="https://www.mo.agency/terms-conditions"
         rel="noreferrer"
       >
         Terms & Conditions
@@ -83,7 +108,7 @@ const Footer = () => (
       <a
         className="block text-white text-sm md:text-[16px]"
         target="_blank"
-        href="https://www.facebook.com/"
+        href="https://www.mo.agency/privacy-policy"
         rel="noreferrer"
       >
         Privacy Policy
