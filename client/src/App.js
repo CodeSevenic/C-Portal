@@ -1,23 +1,14 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-import { FiSettings } from 'react-icons/fi';
-import { TooltipComponent } from '@syncfusion/ej2-react-popups';
 
-import { Navbar, Footer, Sidebar, ThemeSettings } from './components';
-import { Ecommerce } from './pages';
 import './App.css';
 
 import { useStateContext } from './contexts/ContextProvider';
 import Login from './pages/Auth/Login.js';
-import SettingsIcon from './components/SettingsIcon';
-import Layout from './components/Layout/Layout';
 import PrivateRoutes from './components/PrivateRoutes/PrivateRoutes';
 import PublicRoutes from './components/PublicRoutes/PublicRoutes';
-import Register from './pages/Auth/Register';
 import { useAuthStateContext } from './contexts/AuthContext';
 import PasswordReset from './pages/Auth/PasswordReset';
-
-import baseURL from './url';
 import Ticketing from './components/Tickets/TicketList';
 import HubSpotForm from './components/HubSpotForm/HubSpotForm';
 import BlogPosts from './components/BlogPosts/BlogPosts';
