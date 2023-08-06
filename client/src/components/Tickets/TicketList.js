@@ -18,7 +18,6 @@ import './Tickets.css';
 
 function Ticketing() {
   const [tickets, setTickets] = useState([]);
-  const [ticketToEdit, setTicketToEdit] = useState(null);
   const [statusFilter, setStatusFilter] = useState('all');
   const [filteredTickets, setFilteredTickets] = useState([]);
 
@@ -50,20 +49,6 @@ function Ticketing() {
       console.log(error);
       // Depending on your application, you might want to display this error message to your users.
     }
-  };
-
-  const handleInputChange = (event) => {
-    setTicketToEdit({ ...ticketToEdit, [event.target.name]: event.target.value });
-  };
-
-  const submitTicket = async () => {
-    if (ticketToEdit.id) {
-      await axios.put(`${baseURL}/api/tickets/${ticketToEdit.id}`, ticketToEdit);
-    } else {
-      await axios.post(`${baseURL}/api/tickets`, ticketToEdit);
-    }
-    setTicketToEdit(null);
-    fetchTickets();
   };
 
   useEffect(() => {
@@ -106,19 +91,19 @@ function Ticketing() {
     },
   ];
 
-  const handleCellClick = (data) => {
-    setTicketToEdit({
-      ...data,
-      title: data.subject,
-      content: '',
-    });
-  };
+  // const handleCellClick = (data) => {
+  //   setTicketToEdit({
+  //     ...data,
+  //     title: data.subject,
+  //     content: '',
+  //   });
+  // };
 
-  const queryCellInfo = (args) => {
-    if (args.column.field === 'subject') {
-      args.cell.onclick = () => handleCellClick(args.data);
-    }
-  };
+  // const queryCellInfo = (args) => {
+  //   if (args.column.field === 'subject') {
+  //     args.cell.onclick = () => handleCellClick(args.data);
+  //   }
+  // };
 
   const GridInfo = () => {
     const key = `${statusFilter}-${filteredTickets.length}`;
@@ -133,7 +118,7 @@ function Ticketing() {
         allowSorting
         toolbar={toolbarOptions}
         pageSettings={{ pageCount: 5 }}
-        queryCellInfo={queryCellInfo}
+        // queryCellInfo={queryCellInfo}
       >
         <ColumnsDirective>
           <ColumnDirective field="id" headerText="ID" />
@@ -147,55 +132,13 @@ function Ticketing() {
     );
   };
 
-  const deleteTicket = async () => {};
-
   console.log('Filtered Tickets: ', filteredTickets);
 
   return (
     <div className="container mx-auto p-4">
       <div className="max-w-7xl mx-auto px-5 py-20 bg-white rounded-3xl ">
         {filteredTickets.length > 0 ? GridInfo() : GridInfo()}
-        {/* <button
-          className="bg-moBlueLight text-white rounded p-2 px-5 mt-10 "
-          onClick={() => setTicketToEdit({ title: '', content: '' })}
-        >
-          Create a new ticket
-        </button> */}
       </div>
-      <ReactModal isOpen={ticketToEdit !== null} onRequestClose={() => setTicketToEdit(null)}>
-        <button className="close-button" onClick={() => setTicketToEdit(null)}>
-          Close
-        </button>
-        <h1 className="text-2xl mb-4">
-          {ticketToEdit && ticketToEdit.id ? 'Edit Ticket' : 'Create Ticket'}
-        </h1>
-        {ticketToEdit && (
-          <>
-            <input
-              className="border p-2 rounded mb-4 w-full"
-              name="title"
-              value={ticketToEdit.title}
-              onChange={handleInputChange}
-              placeholder="Title"
-            />
-            <textarea
-              className="border p-2 rounded mb-4 w-full"
-              name="content"
-              value={ticketToEdit.content}
-              onChange={handleInputChange}
-              placeholder="Content"
-            />
-            <button className="bg-blue-500 text-white rounded p-2" onClick={submitTicket}>
-              {ticketToEdit.id ? 'Update' : 'Create'}
-            </button>
-            {ticketToEdit.id && (
-              <button className="bg-red-500 text-white rounded p-2" onClick={deleteTicket}>
-                Delete
-              </button>
-            )}
-          </>
-        )}
-      </ReactModal>
     </div>
   );
 }
