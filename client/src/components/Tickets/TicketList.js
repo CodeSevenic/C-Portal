@@ -97,11 +97,11 @@ function Ticketing() {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="max-w-7xl mx-auto px-5 py-20 bg-white rounded-3xl relative">
+      <div className="max-w-7xl mx-auto px-5 pt-10 pb-20 bg-white rounded-3xl relative">
         <div className="mb-8 flex justify-center">
           <button
             onClick={refreshTickets}
-            className="flex max-w-fit hover:text-moBlueLight transition-all duration-300 items-center gap-4"
+            className="flex max-w-fit text-gray-500 hover:text-moBlueLight transition-all duration-300 items-center gap-4"
           >
             <p className="font-semibold">Refresh Tickets</p>
             <FiRefreshCcw className="text-moYellow" />
