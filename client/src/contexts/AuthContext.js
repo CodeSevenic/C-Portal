@@ -1,7 +1,7 @@
 ﻿import React, { useState, createContext, useContext, useEffect } from 'react';
 import { loginWithEmailAndPassword } from '../firebase/firebase';
 import baseURL from '../url';
-import { formatDistanceToNow, parseISO } from 'date-fns';
+import { formatDistanceToNow, parseISO, set } from 'date-fns';
 import axios from 'axios';
 export const AuthContext = createContext();
 
@@ -9,6 +9,7 @@ export const AuthContextProvider = ({ children }) => {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
   const [userData, setUserData] = useState({});
+  const [loadingTickets, setLoadingTickets] = useState(false);
 
   const login = async (email, password) => {
     console.log('Login: email: ', email);
@@ -50,6 +51,8 @@ export const AuthContextProvider = ({ children }) => {
         } else {
           setIsAdmin(false);
         }
+
+        fetchTickets(data.email);
 
         return data.userId;
       } else {
@@ -97,11 +100,12 @@ export const AuthContextProvider = ({ children }) => {
   const [statusFilter, setStatusFilter] = useState('all');
   const [filteredTickets, setFilteredTickets] = useState([]);
 
-  // useEffect(() => {
-  //   fetchTickets();
-  // }, []);
+  useEffect(() => {
+    fetchTickets(sessionStorage.getItem('email'));
+  }, []);
 
   const fetchTickets = async (email) => {
+    setLoadingTickets(true);
     try {
       const response = await axios.get(`${baseURL}/api/tickets?email=${email}`);
       if (response.data.results) {
@@ -125,10 +129,13 @@ export const AuthContextProvider = ({ children }) => {
               : 'Closed',
         }));
         setTickets(reshapedData);
+        setLoadingTickets(false);
       } else {
+        setLoadingTickets(false);
         throw new Error('No results found.');
       }
     } catch (error) {
+      setLoadingTickets(false);
       console.log(error);
     }
   };
@@ -158,6 +165,7 @@ export const AuthContextProvider = ({ children }) => {
         filteredTickets,
         setStatusFilter,
         fetchTickets,
+        loadingTickets,
       }}
     >
       {children}

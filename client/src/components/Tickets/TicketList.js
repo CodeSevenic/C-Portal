@@ -1,23 +1,21 @@
 import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import ReactModal from 'react-modal';
+import { FiRefreshCcw } from 'react-icons/fi';
 import {
   GridComponent,
   ColumnsDirective,
   ColumnDirective,
   Inject,
   Page,
-  Search,
-  Filter,
   Toolbar,
 } from '@syncfusion/ej2-react-grids';
 
-import baseURL from '../../url';
 import './Tickets.css';
 import { useAuthStateContext } from '../../contexts/AuthContext';
+import LoadingSpinner from '../LoadingSpinner/LoadingSpinner';
 
 function Ticketing() {
-  const { filteredTickets, setStatusFilter, statusFilter, fetchTickets } = useAuthStateContext();
+  const { filteredTickets, setStatusFilter, statusFilter, fetchTickets, loadingTickets } =
+    useAuthStateContext();
 
   const toolbarOptions = [
     'Search',
@@ -50,9 +48,10 @@ function Ticketing() {
 
   const email = sessionStorage.getItem('email');
 
-  useEffect(() => {
-    fetchTickets(email);
-  }, []);
+  const refreshTickets = async () => {
+    await fetchTickets(email);
+  };
+
   // const handleCellClick = (data) => {
   //   setTicketToEdit({
   //     ...data,
@@ -98,7 +97,14 @@ function Ticketing() {
 
   return (
     <div className="container mx-auto p-4">
-      <div className="max-w-7xl mx-auto px-5 py-20 bg-white rounded-3xl ">
+      <div className="max-w-7xl mx-auto px-5 py-20 bg-white rounded-3xl relative">
+        <div className="mb-8 flex justify-center">
+          <button className="flex max-w-fit items-center gap-4">
+            <p className="font-semibold">Refresh Tickets</p>
+            <FiRefreshCcw className="text-moYellow" />
+          </button>
+        </div>
+        {loadingTickets ? <LoadingSpinner /> : null}
         {filteredTickets.length > 0 ? GridInfo() : GridInfo()}
       </div>
     </div>
