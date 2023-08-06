@@ -41,9 +41,9 @@ const HubSpotForm = () => {
 
   return (
     <div className="bg-moYellow py-20">
-      <div className="grid grid-cols-2 max-w-7xl px-10 mx-auto">
-        <div className="py-10 my-20">
-          <h1 className="text-[4.8rem] leading-[90px] text-white font-bold">
+      <div className="grid md:grid-cols-2 max-w-7xl px-10 mx-auto">
+        <div className="py-0 md:py-10 my-0 md:my-20">
+          <h1 className="text-5xl md:[4rem] lg:text-[4.8rem] leading-[60px] md:leading-[90px] text-white font-bold">
             Submit a HubSpot Support Ticket.
           </h1>
           <p className="mt-8 text-[1.3rem]">
@@ -54,9 +54,9 @@ const HubSpotForm = () => {
             register your account.
           </p>
         </div>
-        <div className="form-bg flex justify-end">
+        <div className="form-bg flex md:justify-end">
           <div
-            className="my-20 max-w-md py-14 px-8 rounded-lg shadow-xl bg-[#ffffffe7]"
+            className="my-20 w-full md:max-w-md py-14 px-8 rounded-lg shadow-xl bg-[#ffffffe7]"
             id={formId}
           ></div>
         </div>
