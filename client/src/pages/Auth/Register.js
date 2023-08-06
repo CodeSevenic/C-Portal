@@ -10,7 +10,6 @@ import Y_axis_logo from '../../assets/images/YoboDataLogo.png';
 import { useAuthStateContext } from '../../contexts/AuthContext';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
 import Footer from '../../components/Footer';
-import AddAccount from '../../components/AddAccount';
 
 const Register = () => {
   const [username, setUsername] = useState('');
@@ -55,14 +54,6 @@ const Register = () => {
       console.error(error);
       toast.error(error.error);
       setLoadingSpinner(false);
-    }
-  };
-
-  const handleSkip = () => {
-    // check sessionStorage for isLoggedIn value and convert to boolean
-    const isLoggedIn = sessionStorage.getItem('isLoggedIn') === 'true';
-    if (isLoggedIn) {
-      setIsLoggedIn(true);
     }
   };
 
@@ -195,47 +186,6 @@ const Register = () => {
                   </Link>
                 </div>
               </div>
-              <div
-                className={`${
-                  registerSuccess ? 'mr-32 max-w-[600px]' : 'max-w-0 overflow-hidden'
-                } transition-all duration-200 w-full flex-grow`}
-              >
-                {/* <LoadingSpinner /> */}
-                <img
-                  className="mx-auto mb-8"
-                  width={100}
-                  height={100}
-                  src={Logo}
-                  alt="YuboData Logo"
-                />
-                <p className="text-gray-500 text-3xl font-semibold mb-5 text-center">
-                  Great! you have successfully registered!
-                </p>
-                <div>
-                  <p className="text-gray-500 font-semibold mt-8 text-center">
-                    Connect a HubSpot account or skip to your user portal
-                  </p>
-                  <div className="flex flex-col items-center justify-center mb-10">
-                    <AddAccount />
-
-                    <div>
-                      <button
-                        onClick={handleSkip}
-                        className="hover:shadow-lg font-semibold text-btn2"
-                      >
-                        Skip
-                      </button>
-                    </div>
-                  </div>
-                </div>
-
-                {/* <div className="flex gap-5 justify-center">
-                  <p className="font-semibold text-gray-500">Already have an account?</p>
-                  <Link to={'/login'}>
-                    <button className="text-btn2 font-medium">Log in</button>
-                  </Link>
-                </div> */}
-              </div>
             </div>
 
             <div className="relative overflow-hidden w-[100vw] rounded-bl-[30px]">
@@ -251,7 +201,6 @@ const Register = () => {
             <img src={Y_axis_logo} alt="Y axis YuboData Logo" />
           </div>
         </div>
-        <Footer />
       </div>
     </>
   );

@@ -3,6 +3,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 import { useStateContext } from './contexts/ContextProvider';
 import Login from './pages/Auth/Login.js';
+import Register from './pages/Auth/Register';
 import PrivateRoutes from './components/PrivateRoutes/PrivateRoutes';
 import PublicRoutes from './components/PublicRoutes/PublicRoutes';
 import { useAuthStateContext } from './contexts/AuthContext';
@@ -42,9 +43,9 @@ const App = () => {
           <Route path="/login" element={<PublicRoutes />}>
             <Route index element={<Login />} />
           </Route>
-          {/* <Route path="/register" element={<PublicRoutes />}>
+          <Route path="/register" element={<PublicRoutes />}>
             <Route index element={<Register />} />
-          </Route> */}
+          </Route>
           <Route path="/password-reset" element={<PublicRoutes />}>
             <Route index element={<PasswordReset />} />
           </Route>
