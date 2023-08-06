@@ -99,7 +99,10 @@ function Ticketing() {
     <div className="container mx-auto p-4">
       <div className="max-w-7xl mx-auto px-5 py-20 bg-white rounded-3xl relative">
         <div className="mb-8 flex justify-center">
-          <button className="flex max-w-fit items-center gap-4">
+          <button
+            onClick={refreshTickets}
+            className="flex max-w-fit hover:text-moBlueLight transition-all duration-300 items-center gap-4"
+          >
             <p className="font-semibold">Refresh Tickets</p>
             <FiRefreshCcw className="text-moYellow" />
           </button>
