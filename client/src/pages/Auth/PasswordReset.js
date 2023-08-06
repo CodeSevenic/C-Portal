@@ -51,7 +51,7 @@ const PasswordReset = () => {
           theme="dark"
         />
 
-        <div className="grid grid-cols-2 max-w-7xl gap-28 mx-auto h-full ">
+        <div className="grid md:grid-cols-2 px-5 max-w-7xl gap-28 mx-auto h-full ">
           <div className="my-auto max-w-md relative">
             {loadingSpinner && <LoadingSpinner />}
             <img
@@ -92,7 +92,7 @@ const PasswordReset = () => {
               </Link>
             </div>
           </div>
-          <div className="relative overflow-hidden flex items-center justify-end">
+          <div className="relative overflow-hidden hidden md:flex items-center justify-end">
             <img src={MODude} alt="MO Rider" className="block" />
           </div>
         </div>
