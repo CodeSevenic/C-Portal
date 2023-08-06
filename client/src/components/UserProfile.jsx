@@ -82,8 +82,8 @@ const UserProfile = () => {
         <button
           type="button"
           onClick={handleLogout}
-          style={{ backgroundColor: currentColor, color: 'white', borderRadius: '10px' }}
-          className={`w-full text-[16px]  p-3  hover:drop-shadow-xl`}
+          // style={{ backgroundColor: currentColor, color: 'white', borderRadius: '10px' }}
+          className={`w-full text-[16px] rounded-xl text-white hover:bg-moBlueLight transition-all duration-300 bg-moBlue p-3  hover:drop-shadow-xl`}
         >
           Logout
         </button>

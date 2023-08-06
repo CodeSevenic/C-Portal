@@ -5,7 +5,8 @@ import PhoneInput from 'react-phone-number-input';
 import 'react-toastify/dist/ReactToastify.min.css';
 import { Link } from 'react-router-dom';
 import YuboBg from '../../assets/images/yubo_portal_login_page_L-min.jpg';
-import Logo from '../../assets/images/Artboard.png';
+import MODude from '../../assets/images/MO-Yellow-Dude.webp';
+import Logo from '../../assets/images/MO-Logo.svg';
 import Y_axis_logo from '../../assets/images/YoboDataLogo.png';
 import { useAuthStateContext } from '../../contexts/AuthContext';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
@@ -63,8 +64,8 @@ const Register = () => {
 
   return (
     <>
-      <div className="">
-        <div className="overflow-x-hidden relative">
+      <div className="bg-moYellow h-full ">
+        <div className="overflow-x-hidden relative h-full">
           <ToastContainer
             position="top-center"
             autoClose={5000}
@@ -78,127 +79,113 @@ const Register = () => {
             theme="dark"
           />
 
-          <div className="grid grid-cols-2 max-w-5xl mx-auto min-h-[85vh] ">
-            <div className="my-auto flex items-center relative">
-              <div
-                className={`${
-                  registerSuccess ? 'max-w-[0px] overflow-hidden ' : 'mr-32 max-w-[600px] flex-grow'
-                } transition-all duration-200 relative`}
-              >
-                {loadingSpinner && <LoadingSpinner />}
-                <img
-                  className="mx-auto mb-8"
-                  width={100}
-                  height={100}
-                  src={Logo}
-                  alt="YuboData Logo"
-                />
-                <p className="text-gray-500 text-sm font-semibold mb-5 text-center">
-                  Enter your email and password to log in
-                </p>
-                <form onSubmit={handleSubmit} autoComplete="off">
-                  <div className="flex flex-col mb-8">
-                    <label className={`${classLabel} `} htmlFor="username">
-                      Username:
-                    </label>
-                    <input
-                      placeholder="Username"
-                      type="text"
-                      id="username"
-                      value={username}
-                      onChange={(e) => setUsername(e.target.value)}
-                      required
-                      autoComplete="off"
-                      className={`${classInput}`}
-                    />
-                  </div>
-                  <div className="flex flex-col mb-8">
-                    <label className={`${classLabel} `} htmlFor="email">
-                      Email:
-                    </label>
-                    <input
-                      placeholder="Email"
-                      type="email"
-                      id="email"
-                      value={email}
-                      onChange={(e) => setEmail(e.target.value)}
-                      required
-                      autoComplete="off"
-                      className={`${classInput}`}
-                    />
-                  </div>
-                  <div className="flex flex-col mb-8">
-                    <label className={`${classLabel}`} htmlFor="phone">
-                      Phone:
-                    </label>
-                    <PhoneInput
-                      international
-                      defaultCountry="ZA"
-                      placeholder="Enter phone number"
-                      value={phoneNumber}
-                      onChange={setPhoneNumber}
-                      id="phone"
-                      required
-                      className={`${classInput}`}
-                    />
-                  </div>
-                  <div className="flex flex-col mb-14">
-                    <label className={`${classLabel} `} htmlFor="password">
-                      Password:
-                    </label>
-                    <input
-                      placeholder="Password"
-                      type="password"
-                      id="password"
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      autoComplete="new-password"
-                      className={`${classInput}`}
-                    />
-                  </div>
-                  <div className="flex flex-col mb-14">
-                    <label className={`${classLabel} `} htmlFor="confirmPassword">
-                      Confirm Password:
-                    </label>
-                    <input
-                      placeholder="Confirm Password"
-                      type="password"
-                      id="confirmPassword"
-                      value={confirmPassword}
-                      onChange={(e) => setConfirmPassword(e.target.value)}
-                      required
-                      autoComplete="new-password"
-                      className={`${classInput}`}
-                    />
-                  </div>
-                  <button
-                    className="bg-btn1 px-5 block py-2 w-full rounded-xl mb-8 font-semibold text-white hover:shadow-lg transition-all duration-300"
-                    type="submit"
-                  >
-                    Register
-                  </button>
-                </form>
-                <div className="flex gap-5 justify-center">
-                  <p className="font-semibold text-gray-500">Already have an account?</p>
-                  <Link to={'/login'}>
-                    <button className="text-btn2 font-medium">Log in</button>
-                  </Link>
+          <div className="grid md:grid-cols-2 px-5 max-w-7xl gap-28 mx-auto h-full">
+            <div className="my-auto max-w-md relative">
+              {loadingSpinner && <LoadingSpinner />}
+              <img
+                className="mx-auto mb-8"
+                width={250}
+                height={100}
+                src={Logo}
+                alt="MO Customer Portal Logo"
+              />
+              <p className="text-gray-500 text-sm font-semibold mb-5 text-center">
+                Enter your email and password to log in
+              </p>
+              <form onSubmit={handleSubmit} autoComplete="off">
+                <div className="flex flex-col mb-8">
+                  <label className={`${classLabel} `} htmlFor="username">
+                    Username:
+                  </label>
+                  <input
+                    placeholder="Username"
+                    type="text"
+                    id="username"
+                    value={username}
+                    onChange={(e) => setUsername(e.target.value)}
+                    required
+                    autoComplete="off"
+                    className={`${classInput}`}
+                  />
                 </div>
+                <div className="flex flex-col mb-8">
+                  <label className={`${classLabel} `} htmlFor="email">
+                    Email:
+                  </label>
+                  <input
+                    placeholder="Email"
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    autoComplete="off"
+                    className={`${classInput}`}
+                  />
+                </div>
+                <div className="flex flex-col mb-8">
+                  <label className={`${classLabel}`} htmlFor="phone">
+                    Phone:
+                  </label>
+                  <PhoneInput
+                    international
+                    defaultCountry="ZA"
+                    placeholder="Enter phone number"
+                    value={phoneNumber}
+                    onChange={setPhoneNumber}
+                    id="phone"
+                    required
+                    className={`${classInput}`}
+                  />
+                </div>
+                <div className="flex flex-col mb-14">
+                  <label className={`${classLabel} `} htmlFor="password">
+                    Password:
+                  </label>
+                  <input
+                    placeholder="Password"
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    autoComplete="new-password"
+                    className={`${classInput}`}
+                  />
+                </div>
+                <div className="flex flex-col mb-14">
+                  <label className={`${classLabel} `} htmlFor="confirmPassword">
+                    Confirm Password:
+                  </label>
+                  <input
+                    placeholder="Confirm Password"
+                    type="password"
+                    id="confirmPassword"
+                    value={confirmPassword}
+                    onChange={(e) => setConfirmPassword(e.target.value)}
+                    required
+                    autoComplete="new-password"
+                    className={`${classInput}`}
+                  />
+                </div>
+                <button
+                  className="bg-moBlue px-5 block py-2 w-full rounded-xl mb-8 font-semibold text-white hover:bg-moBlueLight hover:shadow-lg transition-all duration-300"
+                  type="submit"
+                >
+                  Register
+                </button>
+              </form>
+              <div className="flex gap-5 justify-center">
+                <p className="font-semibold text-gray-500">Already have an account?</p>
+                <Link to={'/login'}>
+                  <button className="text-moBlue font-medium">Log in</button>
+                </Link>
               </div>
             </div>
 
-            <div className="relative overflow-hidden w-[100vw] rounded-bl-[30px]">
-              <div
-                style={{
-                  backgroundImage: `url(${YuboBg})`,
-                }}
-                className="absolute h-full  w-full min-h-screen bg-cover bg-center bg-no-repeat"
-              ></div>
+            <div className="relative hidden md:flex overflow-hidden items-center justify-end">
+              <img src={MODude} alt="MO Rider" className="block" />
             </div>
-          </div>
-          <div className="absolute top-0 right-0 w-12 bg-white h-full px-2 py-8">
-            <img src={Y_axis_logo} alt="Y axis YuboData Logo" />
           </div>
         </div>
       </div>
