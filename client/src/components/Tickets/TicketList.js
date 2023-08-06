@@ -17,7 +17,7 @@ import './Tickets.css';
 import { useAuthStateContext } from '../../contexts/AuthContext';
 
 function Ticketing() {
-  const { filteredTickets, setStatusFilter, statusFilter } = useAuthStateContext();
+  const { filteredTickets, setStatusFilter, statusFilter, fetchTickets } = useAuthStateContext();
 
   const toolbarOptions = [
     'Search',
@@ -48,6 +48,11 @@ function Ticketing() {
     },
   ];
 
+  const email = sessionStorage.getItem('email');
+
+  useEffect(() => {
+    fetchTickets(email);
+  }, []);
   // const handleCellClick = (data) => {
   //   setTicketToEdit({
   //     ...data,

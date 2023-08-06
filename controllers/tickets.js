@@ -1,7 +1,14 @@
 ﻿const axios = require('axios');
 
 exports.getTicketsByContactEmail = async (req, res) => {
-  const contactEmail = 'sibusiso@mo.agency'; // Hardcoded for testing
+  const email = req.query.email;
+  const contactEmail = email;
+
+  if (!contactEmail) {
+    console.log('No contact email provided');
+    return res.status(400).send({ message: 'No contact email provided' });
+  }
+
   console.log(`Request has been made to get tickets associated with contact ${contactEmail}`);
 
   try {

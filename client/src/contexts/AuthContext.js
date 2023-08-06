@@ -40,6 +40,7 @@ export const AuthContextProvider = ({ children }) => {
         sessionStorage.setItem('isAdmin', data.isAdmin);
         sessionStorage.setItem('username', data.username);
         sessionStorage.setItem('isLoggedIn', data.isLoggedIn);
+        sessionStorage.setItem('email', data.email);
 
         setIsLoggedIn(true);
 
@@ -100,9 +101,9 @@ export const AuthContextProvider = ({ children }) => {
   //   fetchTickets();
   // }, []);
 
-  const fetchTickets = async () => {
+  const fetchTickets = async (email) => {
     try {
-      const response = await axios.get(`${baseURL}/api/tickets`);
+      const response = await axios.get(`${baseURL}/api/tickets?email=${email}`);
       if (response.data.results) {
         const reshapedData = response.data.results.map((ticket) => ({
           id: `#${ticket.id}`,
@@ -156,6 +157,7 @@ export const AuthContextProvider = ({ children }) => {
         setUserData,
         filteredTickets,
         setStatusFilter,
+        fetchTickets,
       }}
     >
       {children}
