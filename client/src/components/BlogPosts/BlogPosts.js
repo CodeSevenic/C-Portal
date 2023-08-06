@@ -1,26 +1,10 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import baseURL from '../../url';
+import { useStateContext } from '../../contexts/ContextProvider';
 
 function BlogPosts() {
-  const [posts, setPosts] = useState([]);
-  const [page, setPage] = useState(1);
-  const [totalPages, setTotalPages] = useState(0);
-
-  const fetchData = async () => {
-    try {
-      const result = await axios.get(`${baseURL}/api/blog-posts?page=${page}`);
-      console.log(result.data.data);
-      setPosts(result.data.data);
-      setTotalPages(result.data.totalPages); // set total pages
-    } catch (error) {
-      console.log(error.message);
-    }
-  };
-
-  useEffect(() => {
-    fetchData();
-  }, [page]);
+  const { posts, setPage, totalPages, page } = useStateContext();
 
   const handleNext = () => {
     setPage((prevPage) => prevPage + 1);

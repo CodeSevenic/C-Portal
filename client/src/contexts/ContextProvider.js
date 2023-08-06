@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState } from 'react';
+import axios from 'axios';
+import React, { createContext, useContext, useEffect, useState } from 'react';
+import baseURL from '../url';
 
 const StateContext = createContext();
 
@@ -27,6 +29,25 @@ export const ContextProvider = ({ children }) => {
     setCurrentColor(color);
     localStorage.setItem('colorMode', color);
   };
+  // Blog Posts State
+  const [posts, setPosts] = useState([]);
+  const [page, setPage] = useState(1);
+  const [totalPages, setTotalPages] = useState(0);
+
+  const fetchData = async () => {
+    try {
+      const result = await axios.get(`${baseURL}/api/blog-posts?page=${page}`);
+      console.log(result.data.data);
+      setPosts(result.data.data);
+      setTotalPages(result.data.totalPages); // set total pages
+    } catch (error) {
+      console.log(error.message);
+    }
+  };
+
+  useEffect(() => {
+    fetchData();
+  }, [page]);
 
   const handleClick = (clicked) => setIsClicked({ ...initialState, [clicked]: true });
 
@@ -52,6 +73,10 @@ export const ContextProvider = ({ children }) => {
         setThemeSettings,
         authPopup,
         setAuthPopup,
+        posts,
+        setPage,
+        totalPages,
+        page,
       }}
     >
       {children}
