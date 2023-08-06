@@ -1,10 +1,8 @@
 import React from 'react';
 import { MdOutlineCancel } from 'react-icons/md';
 
-import { Button } from '.';
-import { userProfileData } from '../data/dummy';
+import Button from '../components/Button';
 import { useStateContext } from '../contexts/ContextProvider';
-import avatar from '../data/avatar.jpg';
 import { useAuthStateContext } from '../contexts/AuthContext';
 import baseURL from '../url';
 

@@ -1,8 +1,6 @@
 import React, { useEffect } from 'react';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
-import './App.css';
-
 import { useStateContext } from './contexts/ContextProvider';
 import Login from './pages/Auth/Login.js';
 import PrivateRoutes from './components/PrivateRoutes/PrivateRoutes';
@@ -13,6 +11,7 @@ import Ticketing from './components/Tickets/TicketList';
 import HubSpotForm from './components/HubSpotForm/HubSpotForm';
 import BlogPosts from './components/BlogPosts/BlogPosts';
 import Webinars from './components/Webinars/Webinars';
+import './App.css';
 
 const App = () => {
   const { setCurrentColor, setCurrentMode, currentMode, activeMenu, themeSettings } =

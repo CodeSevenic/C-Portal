@@ -1,7 +1,7 @@
-﻿import React from 'react';
+import React from 'react';
 import './spinner.css';
 
-export default function LoadingSpinner() {
+const LoadingSpinner = () => {
   return (
     <div className="absolute top-0 bottom-0 left-0 right-0 z-10 ">
       <div className="spinner-container absolute left-[50%] translate-x-[-50%] top-[50%] translate-y-[-50%]">
@@ -9,4 +9,6 @@ export default function LoadingSpinner() {
       </div>
     </div>
   );
-}
+};
+
+export default LoadingSpinner;

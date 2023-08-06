@@ -1,8 +1,5 @@
 ﻿import React from 'react';
 
-import SettingsIcon from '../SettingsIcon';
-import ThemeSettings from '../ThemeSettings';
-import Sidebar from '../Sidebar/Sidebar';
 import Navbar from '../Navbar/Navbar';
 import Footer from '../Footer';
 import SubNav from '../SubNav/SubNav';
@@ -15,10 +12,7 @@ function Layout({ children, activeMenu, themeSettings }) {
           <Navbar />
         </div>
         <SubNav />
-        <div>
-          {themeSettings && <ThemeSettings />}
-          {children}
-        </div>
+        <div>{children}</div>
         <Footer />
       </div>
     </div>

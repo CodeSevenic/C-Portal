@@ -1,4 +1,4 @@
-﻿import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import ReactModal from 'react-modal';
 import {
@@ -11,56 +11,13 @@ import {
   Filter,
   Toolbar,
 } from '@syncfusion/ej2-react-grids';
-import { formatDistanceToNow, parseISO } from 'date-fns';
+
 import baseURL from '../../url';
-import { fit } from '@syncfusion/ej2-react-popups';
 import './Tickets.css';
+import { useAuthStateContext } from '../../contexts/AuthContext';
 
 function Ticketing() {
-  const [tickets, setTickets] = useState([]);
-  const [statusFilter, setStatusFilter] = useState('all');
-  const [filteredTickets, setFilteredTickets] = useState([]);
-
-  useEffect(() => {
-    fetchTickets();
-  }, []);
-
-  const fetchTickets = async () => {
-    try {
-      const response = await axios.get(`${baseURL}/api/tickets`);
-      if (response.data.results) {
-        const reshapedData = response.data.results.map((ticket) => ({
-          id: `#${ticket.id}`,
-          subject: ticket.properties.subject,
-          created: new Date(ticket.properties.createdate).toLocaleDateString('en-US', {
-            year: 'numeric',
-            month: 'long',
-            day: 'numeric',
-          }),
-          lastActivity:
-            formatDistanceToNow(parseISO(ticket.properties.hs_lastmodifieddate)) + ' ago',
-          status: ticket.properties.hs_pipeline_stage,
-        }));
-        setTickets(reshapedData);
-      } else {
-        throw new Error('No results found.');
-      }
-    } catch (error) {
-      console.log(error);
-      // Depending on your application, you might want to display this error message to your users.
-    }
-  };
-
-  useEffect(() => {
-    const filterTickets = () => {
-      if (statusFilter === 'all') {
-        setFilteredTickets(tickets);
-      } else {
-        setFilteredTickets(tickets.filter((ticket) => ticket.status === statusFilter));
-      }
-    };
-    filterTickets();
-  }, [tickets, statusFilter]);
+  const { filteredTickets, setStatusFilter, statusFilter } = useAuthStateContext();
 
   const toolbarOptions = [
     'Search',

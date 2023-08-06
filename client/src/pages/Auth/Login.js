@@ -4,10 +4,8 @@ import 'react-toastify/dist/ReactToastify.min.css';
 import { Link } from 'react-router-dom';
 import MODude from '../../assets/images/MO-Yellow-Dude.webp';
 import Logo from '../../assets/images/MO-Logo.svg';
-import Y_axis_logo from '../../assets/images/YoboDataLogo.png';
 import { useAuthStateContext } from '../../contexts/AuthContext';
 import LoadingSpinner from '../../components/LoadingSpinner/LoadingSpinner';
-import Footer from '../../components/Footer';
 
 const Login = () => {
   const [email, setEmail] = useState('');

@@ -1,6 +1,8 @@
-﻿import React, { useState, createContext, useContext } from 'react';
+﻿import React, { useState, createContext, useContext, useEffect } from 'react';
 import { loginWithEmailAndPassword } from '../firebase/firebase';
 import baseURL from '../url';
+import { formatDistanceToNow, parseISO } from 'date-fns';
+import axios from 'axios';
 export const AuthContext = createContext();
 
 export const AuthContextProvider = ({ children }) => {
@@ -90,6 +92,57 @@ export const AuthContextProvider = ({ children }) => {
     }
   };
 
+  const [tickets, setTickets] = useState([]);
+  const [statusFilter, setStatusFilter] = useState('all');
+  const [filteredTickets, setFilteredTickets] = useState([]);
+
+  // useEffect(() => {
+  //   fetchTickets();
+  // }, []);
+
+  const fetchTickets = async () => {
+    try {
+      const response = await axios.get(`${baseURL}/api/tickets`);
+      if (response.data.results) {
+        const reshapedData = response.data.results.map((ticket) => ({
+          id: `#${ticket.id}`,
+          subject: ticket.properties.subject,
+          created: new Date(ticket.properties.createdate).toLocaleDateString('en-US', {
+            year: 'numeric',
+            month: 'long',
+            day: 'numeric',
+          }),
+          lastActivity:
+            formatDistanceToNow(parseISO(ticket.properties.hs_lastmodifieddate)) + ' ago',
+          status:
+            ticket.properties.hs_pipeline_stage === '94647558'
+              ? 'Open'
+              : ticket.properties.hs_pipeline_stage === '94647559'
+              ? "Pending Customer's Reply"
+              : ticket.properties.hs_pipeline_stage === '94647560'
+              ? "Pending MO's Reply"
+              : 'Closed',
+        }));
+        setTickets(reshapedData);
+      } else {
+        throw new Error('No results found.');
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    const filterTickets = () => {
+      if (statusFilter === 'all') {
+        setFilteredTickets(tickets);
+      } else {
+        setFilteredTickets(tickets.filter((ticket) => ticket.status === statusFilter));
+      }
+    };
+    filterTickets();
+  }, [tickets, statusFilter]);
+
   return (
     <AuthContext.Provider
       value={{
@@ -101,6 +154,8 @@ export const AuthContextProvider = ({ children }) => {
         setIsLoggedIn,
         userData,
         setUserData,
+        filteredTickets,
+        setStatusFilter,
       }}
     >
       {children}
