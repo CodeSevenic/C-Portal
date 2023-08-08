@@ -1,0 +1,22 @@
+{
+  "files": {
+    "main.css": "/static/css/main.3c00cc62.css",
+    "main.js": "/static/js/main.b6b61369.js",
+    "static/media/MO-Yellow-Dude.webp": "/static/media/MO-Yellow-Dude.56f8b024c37babb52448.webp",
+    "static/media/yubo_portal_login_page_L-min.jpg": "/static/media/yubo_portal_login_page_L-min.29485981a63a48243e8f.jpg",
+    "static/media/YoboDataLogo.png": "/static/media/YoboDataLogo.68fed0a6819010bd1728.png",
+    "static/media/account-icon.png": "/static/media/account-icon.de2444b1b540b4993a2c.png",
+    "static/media/MO-Logo-Footer.svg": "/static/media/MO-Logo-Footer.00a815697b85d23b506324e78a7dbe45.svg",
+    "static/media/MO-Logo.svg": "/static/media/MO-Logo.08deaa753260e588cfdacc48f17028d3.svg",
+    "static/media/LinkedIn.svg": "/static/media/LinkedIn.d404fef476af228a326ef9de9ad734e3.svg",
+    "static/media/Facebook.svg": "/static/media/Facebook.03906f45baf60e9d293b349707fd760c.svg",
+    "static/media/Instagram.svg": "/static/media/Instagram.0fe30274896fefea2c4a2a1688a7f5d3.svg",
+    "index.html": "/index.html",
+    "main.3c00cc62.css.map": "/static/css/main.3c00cc62.css.map",
+    "main.b6b61369.js.map": "/static/js/main.b6b61369.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.3c00cc62.css",
+    "static/js/main.b6b61369.js"
+  ]
+}

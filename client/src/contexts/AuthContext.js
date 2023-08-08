@@ -12,14 +12,10 @@ export const AuthContextProvider = ({ children }) => {
   const [loadingTickets, setLoadingTickets] = useState(false);
 
   const login = async (email, password) => {
-    console.log('Login: email: ', email);
-
     const idToken = await loginWithEmailAndPassword(email, password);
 
-    console.log('AuthContext: ', process.env.REACT_APP_FIREBASE_API_KEY);
     try {
       localStorage.removeItem('prevUrl');
-      console.log('Login: email: ', email);
       const response = await fetch(`${baseURL}/api/login`, {
         method: 'POST',
         credentials: 'include',
@@ -31,7 +27,6 @@ export const AuthContextProvider = ({ children }) => {
         const data = await response.json();
         // Perform other actions, like updating the state, redirecting to another page, etc.
         console.log('Login: Successfully went through!!!');
-        console.log('Login: ', data);
 
         setUserData(data);
         // start by clearing sessionStorage
@@ -66,7 +61,6 @@ export const AuthContextProvider = ({ children }) => {
 
   const register = async (username, email, password, phone) => {
     localStorage.removeItem('prevUrl');
-    console.log('Register: email: ', email);
     const response = await fetch(`${baseURL}/api/register`, {
       method: 'POST',
       credentials: 'include',

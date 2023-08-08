@@ -48,6 +48,12 @@ const HubSpotForm = () => {
     // On component unmount, do not remove the script
   }, []);
 
+  setTimeout(() => {
+    if (document.querySelector('input[type="email"]')) {
+      document.querySelector('input[type="email"]').value = sessionStorage.getItem('email');
+    }
+  }, 4000);
+
   return (
     <div className="bg-moYellow py-20">
       <div className="grid md:grid-cols-2 max-w-7xl px-10 mx-auto">

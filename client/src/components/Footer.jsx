@@ -14,7 +14,7 @@ const Footer = () => (
         <p className="text-white">We are awesome at making things function and look great!</p>
         <div className="social-links flex gap-5 mt-8">
           <a
-            className="block"
+            className="block filter hover:brightness-150 transition-all duration-300"
             href="https://www.facebook.com/MOSouthAfrica"
             target="_blank"
             rel="noreferrer"
@@ -22,7 +22,7 @@ const Footer = () => (
             <img src={Facebook} alt="Facebook Logo" />
           </a>
           <a
-            className="block"
+            className="block filter hover:brightness-150 transition-all duration-300"
             target="_blank"
             href="https://www.instagram.com/mo.agency_za/?hl=en"
             rel="noreferrer"
@@ -30,7 +30,7 @@ const Footer = () => (
             <img src={Instagram} alt="Instagram Logo" />
           </a>
           <a
-            className="block"
+            className="block filter hover:brightness-150 transition-all duration-300"
             target="_blank"
             href="https://www.linkedin.com/company/2258363"
             rel="noreferrer"
@@ -42,27 +42,27 @@ const Footer = () => (
       <div className="mt-8 md:mt-0">
         <h3 className="text-white font-bold mb-12">Quick Links</h3>
         <ul className="text-white">
-          <li className="mb-3">
+          <li className="mb-3 hover:text-moBlueLight transition-all duration-300">
             <a target="_blank" rel="noreferrer" href="https://www.mo.agency/about-us">
               About Us
             </a>
           </li>
-          <li className="mb-3">
+          <li className="mb-3 hover:text-moBlueLight transition-all duration-300">
             <a target="_blank" rel="noreferrer" href="https://www.mo.agency/blog">
               Blog
             </a>
           </li>
-          <li className="mb-3">
+          <li className="mb-3 hover:text-moBlueLight transition-all duration-300">
             <a target="_blank" rel="noreferrer" href="https://www.mo.agency/pricing">
               Pricing
             </a>
           </li>
-          <li className="mb-3">
+          <li className="mb-3 hover:text-moBlueLight transition-all duration-300">
             <a target="_blank" rel="noreferrer" href="https://www.mo.agency/careers">
               Careers
             </a>
           </li>
-          <li className="mb-3">
+          <li className="mb-3 hover:text-moBlueLight transition-all duration-300">
             <a target="_blank" rel="noreferrer" href="https://www.mo.agency/contact">
               Contact Us
             </a>
@@ -98,7 +98,7 @@ const Footer = () => (
     <div className="flex flex-col md:flex-row items-center gap-2 justify-between px-6 max-w-5xl mx-auto pt-20 pb-10">
       <p className="text-white text-sm md:text-[16px]">© MO Agency 2023</p>
       <a
-        className="block text-white text-sm md:text-[16px]"
+        className="block text-white text-sm md:text-[16px] hover:text-moBlueLight transition-all duration-300"
         target="_blank"
         href="https://www.mo.agency/terms-conditions"
         rel="noreferrer"
@@ -106,7 +106,7 @@ const Footer = () => (
         Terms & Conditions
       </a>
       <a
-        className="block text-white text-sm md:text-[16px]"
+        className="block text-white text-sm md:text-[16px] hover:text-moBlueLight transition-all duration-300"
         target="_blank"
         href="https://www.mo.agency/privacy-policy"
         rel="noreferrer"

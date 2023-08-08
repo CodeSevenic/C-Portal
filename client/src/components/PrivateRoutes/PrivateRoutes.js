@@ -10,10 +10,6 @@ const PrivateRoutes = ({ children, activeMenu, themeSettings }) => {
 
   const { isLoggedIn, isAdmin } = useAuthStateContext();
 
-  console.log('isLoggedIn: ', isLoggedIn);
-
-  console.log('isAdminSession: ', isAdmin);
-
   // useEffect(() => {
   //   if (isLoggedIn) {
   //     if (isAdmin && location.pathname !== '/app-admin') {

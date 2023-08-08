@@ -67,7 +67,7 @@ exports.register = async (req, res) => {
       appAuths: userData.data().appAuths ? userData.data().appAuths : {},
       features: userData.data().features ? userData.data().features : {},
     });
-    sendWelcomeEmail(email);
+    // sendWelcomeEmail(email);
   } catch (error) {
     res
       .status(400)

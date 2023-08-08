@@ -27,7 +27,6 @@ function Ticketing() {
             className="border-1 w-32 border-color-gray-400 rounded-md p-1 text-gray-400 text-[12px]"
             value={statusFilter}
             onChange={(e) => {
-              console.log('e.target.value: ', e.target.value);
               setStatusFilter(e.target.value);
             }}
           >
@@ -98,8 +97,6 @@ function Ticketing() {
       </GridComponent>
     );
   };
-
-  console.log('Filtered Tickets: ', filteredTickets);
 
   return (
     <div className="container mx-auto p-4">

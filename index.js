@@ -20,13 +20,7 @@ if (NODE_ENV === 'DEV') {
     })
   );
 } else {
-  app.use(
-    cors({
-      origin: ['https://seahorse-app-847hs.ondigitalocean.app'], // Replace with your frontend origin
-      methods: ['GET', 'POST'],
-      credentials: true,
-    })
-  );
+  app.use(cors());
 }
 
 app.use(express.json({ limit: '50mb' }));
@@ -55,11 +49,13 @@ const authRoutes = require('./routes/auth');
 const firebase = require('./routes/firebase');
 const tickets = require('./routes/tickets');
 const posts = require('./routes/posts');
+const webinars = require('./routes/webinars');
 
 app.use('/api/', authRoutes);
 app.use('/api/', firebase);
 app.use('/api/', tickets);
 app.use('/api/', posts);
+app.use('/api/', webinars);
 
 // Front End
 app.use(express.static(path.join(__dirname, 'client/build')));

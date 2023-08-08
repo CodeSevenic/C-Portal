@@ -6,8 +6,6 @@ const PublicRoutes = ({ redirectTo = '/' }) => {
   // check if user is logged in with useContext hook
   const { isLoggedIn } = useAuthStateContext();
 
-  console.log('isLoggedIn: ', isLoggedIn);
-
   return isLoggedIn ? <Navigate to={redirectTo} replace /> : <Outlet />;
 };
 

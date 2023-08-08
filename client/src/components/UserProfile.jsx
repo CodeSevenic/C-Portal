@@ -13,7 +13,6 @@ const UserProfile = () => {
   const handleLogout = async (e) => {
     setIsClicked(initialState);
     e.preventDefault();
-    console.log('isClicked:', isClicked);
     try {
       const response = await fetch(`${baseURL}/api/logout`, {
         method: 'POST',

@@ -21,7 +21,6 @@ const Login = () => {
     e.preventDefault();
     try {
       const response = await login(email, password);
-      console.log('response: ', response);
       toast.success(response.data.message);
       if (response.isLoggedIn) {
         setLoadingSpinner(false);

@@ -37,7 +37,6 @@ export const ContextProvider = ({ children }) => {
   const fetchData = async () => {
     try {
       const result = await axios.get(`${baseURL}/api/blog-posts?page=${page}`);
-      console.log(result.data.data);
       setPosts(result.data.data);
       setTotalPages(result.data.totalPages); // set total pages
     } catch (error) {
