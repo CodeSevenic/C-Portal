@@ -2,24 +2,10 @@
 import axios from 'axios';
 import { MdEventAvailable, MdEventBusy } from 'react-icons/md';
 import './Webinars.css';
+import { useStateContext } from '../../contexts/ContextProvider';
 
 function Webinars() {
-  const [webinars, setWebinars] = useState([]);
-  const [error, setError] = useState(null);
-
-  useEffect(() => {
-    async function fetchWebinars() {
-      try {
-        const response = await axios.get('http://localhost:4000/api/webinars');
-        setWebinars(response.data.webinars || []);
-      } catch (error) {
-        console.error('Error fetching webinars:', error);
-        setError('Failed to fetch webinars. Please try again later.');
-      }
-    }
-
-    fetchWebinars();
-  }, []);
+  const { error, webinars } = useStateContext();
 
   const upcomingWebinars = webinars.filter((webinar) => new Date(webinar.start_time) > new Date());
   const pastWebinars = webinars.filter((webinar) => new Date(webinar.start_time) <= new Date());
