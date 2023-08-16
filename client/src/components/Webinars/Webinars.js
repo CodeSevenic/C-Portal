@@ -44,7 +44,7 @@ function Webinars() {
         {upcomingWebinars.map((webinar) => (
           <li key={webinar.id} className="webinar border p-4 rounded-md bg-white shadow-md">
             <h3 className="text-2xl font-medium flex items-center gap-2 mb-4">
-              <MdEventAvailable className="text-5xl text-moBlue" />
+              <MdEventAvailable className=" text-moBlue" />
               {webinar.topic}
             </h3>
             <p className="text-gray-600 mb-2">{formatDate(webinar.start_time)}</p>
@@ -66,7 +66,7 @@ function Webinars() {
         {pastWebinars.map((webinar) => (
           <li key={webinar.id} className="webinar border p-4 rounded-md bg-white shadow-md">
             <h3 className="text-2xl font-medium flex items-center gap-2 mb-4">
-              <MdEventBusy className="text-5xl text-moBlue" />
+              <MdEventBusy className=" text-moBlue" />
               {webinar.topic}
             </h3>
             <p className="text-gray-600 mb-2">{formatDate(webinar.start_time)}</p>

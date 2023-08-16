@@ -50,6 +50,23 @@ export const ContextProvider = ({ children }) => {
 
   const handleClick = (clicked) => setIsClicked({ ...initialState, [clicked]: true });
 
+  const [webinars, setWebinars] = useState([]);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    async function fetchWebinars() {
+      try {
+        const response = await axios.get('http://localhost:4000/api/webinars');
+        setWebinars(response.data.webinars || []);
+      } catch (error) {
+        console.error('Error fetching webinars:', error);
+        setError('Failed to fetch webinars. Please try again later.');
+      }
+    }
+
+    fetchWebinars();
+  }, []);
+
   return (
     // eslint-disable-next-line react/jsx-no-constructed-context-values
     <StateContext.Provider
@@ -76,6 +93,8 @@ export const ContextProvider = ({ children }) => {
         setPage,
         totalPages,
         page,
+        webinars,
+        error,
       }}
     >
       {children}
