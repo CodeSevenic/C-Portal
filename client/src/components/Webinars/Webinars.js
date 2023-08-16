@@ -1,64 +1,73 @@
-﻿// import React, { useState, useEffect } from 'react';
-// import axios from 'axios';
+﻿import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
-// function Webinars() {
-//   const [upcomingWebinars, setUpcomingWebinars] = useState([]);
-//   const [pastWebinars, setPastWebinars] = useState([]);
-//   const [error, setError] = useState(null);
+function Webinars() {
+  const [webinars, setWebinars] = useState([]);
+  const [error, setError] = useState(null);
 
-//   useEffect(() => {
-//     async function fetchWebinars() {
-//       try {
-//         const response = await axios.get('http://localhost:4000/api/webinars');
-//         setUpcomingWebinars(response.data.upcoming || []);
-//         setPastWebinars(response.data.past ? response.data.past.slice(0, 5) : []); // Only take the last 5 webinars for display
-//       } catch (error) {
-//         console.error('Error fetching webinars:', error);
-//         setError('Failed to fetch webinars. Please try again later.');
-//       }
-//     }
+  useEffect(() => {
+    async function fetchWebinars() {
+      try {
+        const response = await axios.get('http://localhost:4000/api/webinars');
+        setWebinars(response.data.webinars || []);
+      } catch (error) {
+        console.error('Error fetching webinars:', error);
+        setError('Failed to fetch webinars. Please try again later.');
+      }
+    }
 
-//     fetchWebinars();
-//   }, []);
+    fetchWebinars();
+  }, []);
 
-//   return (
-//     <div>
-//       {error && <p style={{ color: 'red' }}>{error}</p>}
+  const upcomingWebinars = webinars.filter((webinar) => new Date(webinar.start_time) > new Date());
+  const pastWebinars = webinars.filter((webinar) => new Date(webinar.start_time) <= new Date());
 
-//       <h2>Upcoming Webinars</h2>
-//       <ul>
-//         {upcomingWebinars.map((webinar) => (
-//           <li key={webinar.id}>
-//             {webinar.topic} -
-//             <a href={webinar.join_url} target="_blank" rel="noopener noreferrer">
-//               Join Now
-//             </a>
-//           </li>
-//         ))}
-//       </ul>
+  const formatDate = (dateString) => {
+    return new Intl.DateTimeFormat('en-US', {
+      month: 'short',
+      day: 'numeric',
+      year: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+      timeZoneName: 'short',
+    }).format(new Date(dateString));
+  };
 
-//       <h2>Past Webinars (Last 5)</h2>
-//       <ul>
-//         {pastWebinars.map((webinar) => (
-//           <li key={webinar.id}>{webinar.topic}</li>
-//         ))}
-//       </ul>
-//     </div>
-//   );
-// }
-
-// export default Webinars;
-
-import React from 'react';
-
-const Webinars = () => {
   return (
-    <div className="py-20">
-      <h1 className="text-xl md:text-4xl lg:text-5xl xl:text-7xl font-bold text-center">
-        Webinars Coming Soon 😁
-      </h1>
+    <div className="p-4 max-w-7xl mx-auto px-5 xl:px-0 py-20">
+      {error && <p className="mb-4 text-red-500">{error}</p>}
+
+      <h2 className="text-4xl font-bold mb-8">Upcoming Webinars</h2>
+      <ul className="space-y-4">
+        {upcomingWebinars.map((webinar) => (
+          <li key={webinar.id} className="border p-4 rounded-md bg-white shadow-md">
+            <h3 className="text-lg font-medium">{webinar.topic}</h3>
+            <p className="text-gray-600 mb-2">{formatDate(webinar.start_time)}</p>
+            <p className="text-gray-600">{webinar.agenda}</p>
+            <a
+              href={webinar.join_url}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="inline-block mt-2 text-blue-500 hover:underline"
+            >
+              Join Now
+            </a>
+          </li>
+        ))}
+      </ul>
+
+      <h2 className="text-4xl font-bold mt-8 mb-8">Past Webinars</h2>
+      <ul className="space-y-4">
+        {pastWebinars.map((webinar) => (
+          <li key={webinar.id} className="border p-4 rounded-md bg-white shadow-sm">
+            <h3 className="text-lg font-medium">{webinar.topic}</h3>
+            <p className="text-gray-600 mb-2">{formatDate(webinar.start_time)}</p>
+            <p className="text-gray-600">{webinar.agenda}</p>
+          </li>
+        ))}
+      </ul>
     </div>
   );
-};
+}
 
 export default Webinars;

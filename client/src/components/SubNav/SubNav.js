@@ -16,7 +16,7 @@ const SubNav = () => {
 
   return (
     <div className={`${location.pathname === '/log-ticket' ? 'bg-moYellow' : ''}`}>
-      <div className={`nav-items max-w-6xl mx-auto px-5 pt-20`}>
+      <div className={`nav-items max-w-6xl mx-auto px-5 pt-20 pb-10`}>
         <ul className="grid grid-cols-2 lg:flex gap-5 md:gap-9 justify-around">
           <li className="rounded-xl border-1 border-gray-50 shadow-md">
             <NavLink
