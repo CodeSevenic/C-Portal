@@ -1,6 +1,7 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { MdEventAvailable, MdEventBusy } from 'react-icons/md';
+import './Webinars.css';
 
 function Webinars() {
   const [webinars, setWebinars] = useState([]);
@@ -41,9 +42,9 @@ function Webinars() {
       <h2 className="text-4xl font-bold mb-8">Upcoming Webinars</h2>
       <ul className="space-y-4">
         {upcomingWebinars.map((webinar) => (
-          <li key={webinar.id} className="border p-4 rounded-md bg-white shadow-md">
+          <li key={webinar.id} className="webinar border p-4 rounded-md bg-white shadow-md">
             <h3 className="text-2xl font-medium flex items-center gap-2 mb-4">
-              <MdEventAvailable className="text-5xl" />
+              <MdEventAvailable className="text-5xl text-moBlue" />
               {webinar.topic}
             </h3>
             <p className="text-gray-600 mb-2">{formatDate(webinar.start_time)}</p>
@@ -52,7 +53,7 @@ function Webinars() {
               href={webinar.join_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-block mt-2 text-blue-500 hover:underline"
+              className="inline-block mt-2 text-xl text-moBlueLight hover:underline"
             >
               Join Now
             </a>
@@ -63,9 +64,9 @@ function Webinars() {
       <h2 className="text-4xl font-bold mt-8 mb-8">Past Webinars</h2>
       <ul className="space-y-4">
         {pastWebinars.map((webinar) => (
-          <li key={webinar.id} className="border p-4 rounded-md bg-white shadow-md">
+          <li key={webinar.id} className="webinar border p-4 rounded-md bg-white shadow-md">
             <h3 className="text-2xl font-medium flex items-center gap-2 mb-4">
-              <MdEventBusy className="text-5xl" />
+              <MdEventBusy className="text-5xl text-moBlue" />
               {webinar.topic}
             </h3>
             <p className="text-gray-600 mb-2">{formatDate(webinar.start_time)}</p>
