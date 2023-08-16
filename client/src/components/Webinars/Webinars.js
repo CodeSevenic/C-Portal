@@ -22,7 +22,7 @@ function Webinars() {
   };
 
   return (
-    <div className="p-4 max-w-7xl mx-auto px-5 xl:px-0 py-20">
+    <div className="p-4 max-w-7xl mx-auto px-5 xl:px-0 pt-20 pb-32">
       {error && <p className="mb-4 text-red-500">{error}</p>}
 
       <h2 className="text-4xl font-bold mb-8">Upcoming Webinars</h2>
