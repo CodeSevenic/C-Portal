@@ -1,5 +1,6 @@
 ﻿import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import { MdEventAvailable, MdEventBusy } from 'react-icons/md';
 
 function Webinars() {
   const [webinars, setWebinars] = useState([]);
@@ -41,7 +42,10 @@ function Webinars() {
       <ul className="space-y-4">
         {upcomingWebinars.map((webinar) => (
           <li key={webinar.id} className="border p-4 rounded-md bg-white shadow-md">
-            <h3 className="text-lg font-medium">{webinar.topic}</h3>
+            <h3 className="text-2xl font-medium flex items-center gap-2 mb-4">
+              <MdEventAvailable className="text-5xl" />
+              {webinar.topic}
+            </h3>
             <p className="text-gray-600 mb-2">{formatDate(webinar.start_time)}</p>
             <p className="text-gray-600">{webinar.agenda}</p>
             <a
@@ -59,8 +63,11 @@ function Webinars() {
       <h2 className="text-4xl font-bold mt-8 mb-8">Past Webinars</h2>
       <ul className="space-y-4">
         {pastWebinars.map((webinar) => (
-          <li key={webinar.id} className="border p-4 rounded-md bg-white shadow-sm">
-            <h3 className="text-lg font-medium">{webinar.topic}</h3>
+          <li key={webinar.id} className="border p-4 rounded-md bg-white shadow-md">
+            <h3 className="text-2xl font-medium flex items-center gap-2 mb-4">
+              <MdEventBusy className="text-5xl" />
+              {webinar.topic}
+            </h3>
             <p className="text-gray-600 mb-2">{formatDate(webinar.start_time)}</p>
             <p className="text-gray-600">{webinar.agenda}</p>
           </li>
