@@ -36,7 +36,7 @@ exports.getTicketsByContactEmail = async (req, res) => {
 
     const contacts = contactsResponse.data.results;
 
-    console.log('Contacts: ', contacts);
+    // console.log('Contacts: ', contacts);
     const contact = contacts.find((c) => c.properties.email === contactEmail);
 
     if (!contact) {
