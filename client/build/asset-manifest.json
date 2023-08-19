@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.3c00cc62.css",
-    "main.js": "/static/js/main.b6b61369.js",
+    "main.css": "/static/css/main.dc58478e.css",
+    "main.js": "/static/js/main.9d73e6a1.js",
     "static/media/MO-Yellow-Dude.webp": "/static/media/MO-Yellow-Dude.56f8b024c37babb52448.webp",
     "static/media/yubo_portal_login_page_L-min.jpg": "/static/media/yubo_portal_login_page_L-min.29485981a63a48243e8f.jpg",
     "static/media/YoboDataLogo.png": "/static/media/YoboDataLogo.68fed0a6819010bd1728.png",
@@ -12,11 +12,11 @@
     "static/media/Facebook.svg": "/static/media/Facebook.03906f45baf60e9d293b349707fd760c.svg",
     "static/media/Instagram.svg": "/static/media/Instagram.0fe30274896fefea2c4a2a1688a7f5d3.svg",
     "index.html": "/index.html",
-    "main.3c00cc62.css.map": "/static/css/main.3c00cc62.css.map",
-    "main.b6b61369.js.map": "/static/js/main.b6b61369.js.map"
+    "main.dc58478e.css.map": "/static/css/main.dc58478e.css.map",
+    "main.9d73e6a1.js.map": "/static/js/main.9d73e6a1.js.map"
   },
   "entrypoints": [
-    "static/css/main.3c00cc62.css",
-    "static/js/main.b6b61369.js"
+    "static/css/main.dc58478e.css",
+    "static/js/main.9d73e6a1.js"
   ]
 }

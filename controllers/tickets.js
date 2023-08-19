@@ -40,13 +40,13 @@ exports.getTicketsByContactEmail = async (req, res) => {
     const contact = contacts.find((c) => c.properties.email === contactEmail);
 
     if (!contact) {
-      console.log('Contact not found');
+      // console.log('Contact not found');
       return res.status(404).send({ message: 'Contact not found' });
     }
 
     const contactId = contact.id;
 
-    console.log('Contact ID: ', contactId);
+    // console.log('Contact ID: ', contactId);
 
     // Now, get all tickets associated with the contact
     const associationsResponse = await axios.get(
@@ -60,7 +60,7 @@ exports.getTicketsByContactEmail = async (req, res) => {
     );
 
     const associatedTicketIds = associationsResponse.data.results;
-    console.log('Ticket IDs associated with', contactEmail, ':', associatedTicketIds);
+    // console.log('Ticket IDs associated with', contactEmail, ':', associatedTicketIds);
 
     // Fetch detailed ticket data for each associated ticket
     const associatedTickets = [];
@@ -76,7 +76,7 @@ exports.getTicketsByContactEmail = async (req, res) => {
       associatedTickets.push(ticketResponse.data);
     }
 
-    console.log('Detailed ticket data: ', associatedTickets);
+    // console.log('Detailed ticket data: ', associatedTickets);
     res.send({ results: associatedTickets });
   } catch (error) {
     console.log(error);

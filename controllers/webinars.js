@@ -1,11 +1,13 @@
 ﻿const axios = require('axios');
 const axiosRetry = require('axios-retry');
+const dotenv = require('dotenv');
+dotenv.config();
 
-const ZOOM_OAUTH_ENDPOINT = 'https://zoom.us/oauth/token';
-const ZOOM_API_ENDPOINT = 'https://api.zoom.us/v2';
-const ACCOUNT_ID = 'qjkq_RUNQVmpxQ47asR6bA';
-const CLIENT_ID = '0tQ_JXkYRgahfuvfQVSUhg';
-const CLIENT_SECRET = 'j1ghjVG279cbpiWUnW6gLZqlIHFhCIrj';
+const ZOOM_OAUTH_ENDPOINT = process.env.ZOOM_OAUTH_ENDPOINT;
+const ZOOM_API_ENDPOINT = process.env.ZOOM_API_ENDPOINT;
+const ACCOUNT_ID = process.env.ACCOUNT_ID;
+const CLIENT_ID = process.env.CLIENT_ID;
+const CLIENT_SECRET = process.env.CLIENT_SECRET;
 
 let accessToken;
 let tokenExpiresAt = 0;
@@ -44,15 +46,17 @@ async function getAccessToken() {
 }
 
 async function fetchWebinars(req, res) {
+  // console.log('Token (before fetching): ', accessToken);
+
   if (!accessToken || isTokenExpired()) {
     try {
       await getAccessToken();
-      console.log('Token (after fetching): ', accessToken); // <-- moved here
+      // console.log('Token (after fetching): ', accessToken); // <-- moved here
     } catch (error) {
       return res.status(500).send(error.message);
     }
   } else {
-    console.log('Token (existing): ', accessToken);
+    // console.log('Token (existing): ', accessToken);
   }
 
   try {
@@ -62,7 +66,7 @@ async function fetchWebinars(req, res) {
         'Content-Type': 'application/json',
       },
     });
-    console.log('response.data', response.data);
+    // console.log('response.data', response.data);
     res.json(response.data);
   } catch (error) {
     if (error.response && error.response.status === 401 && !isTokenExpired()) {
@@ -76,37 +80,6 @@ async function fetchWebinars(req, res) {
     res.status(500).send('Failed to fetch webinars.');
   }
 }
-
-const HUBSPOT_API_URL = 'https://api.hubapi.com';
-const ACCESS_TOKEN = process.env.HUBSPOT_API_KEY;
-
-async function fetchAllEvents() {
-  try {
-    const response = await axios.get(
-      `${HUBSPOT_API_URL}/marketing/v3/marketing-events/events/search`,
-      {
-        headers: {
-          Authorization: `Bearer ${ACCESS_TOKEN}`,
-        },
-        params: {
-          q: 'hubspot-johannesburg-presents-contact-hygiene-in-hubspot-practical-strategies-to-increase-your-marketing-results',
-        },
-      }
-    );
-
-    console.log(response);
-    return response.data;
-  } catch (error) {
-    if (error.response) {
-      console.error(JSON.stringify(error.response.data, null, 2));
-    } else {
-      console.error('Error fetching events:', error.message);
-    }
-    console.log('Error fetching events:', error);
-  }
-}
-
-fetchAllEvents();
 
 module.exports = {
   fetchWebinars,
