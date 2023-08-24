@@ -2,7 +2,7 @@
 
 dotenv.config();
 
-// const PORT = process.env.PORT || 8080;
+const PORT = process.env.PORT || 8080;
 
 const config = {
   HUBSPOT_API_KEY: process.env.HUBSPOT_API_KEY,
